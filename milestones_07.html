@@ -10,6 +10,18 @@
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="css/homepage.css" />
 		<script src="js/vendor/modernizr.js"></script>
+		<style>
+			img {
+				border: 1px solid black;
+			}
+			a img {
+				border: 1px solid black;
+			}
+			#shrinky {
+				height: 400px;
+			}
+
+		</style>
 	</head>
 	<body>
 		<!-- Nav Bar -->
@@ -49,12 +61,17 @@
 				</p>
 				<div class="question-text">
 					<p>
-						What is the aspect ratio of this geographic region?
+						Given that McKinley County NM is contained within the following BBOX: -109.5, 34.5, -106.5, 36.5, what is the aspect ratio of this geographic region?
 					</p>
+
 				</div>
 				<div class="answer">
 					<p>
-						answer
+						Width: -106.5 - (-109.5) = 3
+						<br />
+						Height: 36.5 - 34.5 = 2
+						<br />
+						Width / Height = 3 /2 = 1.5  The aspect ratio of this region is 1.5.
 					</p>
 				</div>
 
@@ -68,7 +85,9 @@
 				</div>
 				<div class="answer">
 					<p>
-						Answer
+						The height in pixels for a 600 pixel wide image at this aspect ratio is:
+						<br />
+						600 * 2/3 = 400 pixels.
 					</p>
 				</div>
 
@@ -83,7 +102,9 @@
 
 				<div class="answer">
 					<p>
-						answer
+						<small> <a href="http://gstore.unm.edu/apps/rgis/datasets/92403ebf-aec5-404b-ae8a-6db41f388737/services/ogc/wms?VERSION=1.1.1&SERVICE=WMS&REQUEST=GetMap&BBOX=-109.5,34.5,-106.5,36.5&LAYERS=2007fe_35_county&FORMAT=image/png&TRANSPARENT=FALSE&STYLES=&SRS=EPSG:4326&WIDTH=600&HEIGHT=400" target="_blank">http://gstore.unm.edu/apps/rgis/datasets/92403ebf-aec5-404b-ae8a-6db41f388737/services/ogc/wms?VERSION=1.1.1&SERVICE=WMS&REQUEST=GetMap&BBOX=-109.5,34.5,-106.5,36.5&LAYERS=2007fe_35_county&FORMAT=image/png&TRANSPARENT=FALSE&STYLES=&SRS=EPSG:4326&WIDTH=600&HEIGHT=400</a> </small>
+					</p>
+					<p><img src="img/mckinley.png" />
 					</p>
 				</div>
 
@@ -97,7 +118,9 @@
 				</div>
 				<div class="answer">
 					<p>
-						answer
+						<small><a href="http://gstore.unm.edu/apps/rgis/datasets/92403ebf-aec5-404b-ae8a-6db41f388737/services/ogc/wms?VERSION=1.1.1&SERVICE=WMS&REQUEST=GetMap&BBOX=-109.5,34.5,-106.5,39&LAYERS=2007fe_35_county&FORMAT=image/png&TRANSPARENT=FALSE&STYLES=&SRS=EPSG:4326&WIDTH=600&HEIGHT=900" target="_blank">http://gstore.unm.edu/apps/rgis/datasets/92403ebf-aec5-404b-ae8a-6db41f388737/services/ogc/wms?VERSION=1.1.1&SERVICE=WMS&REQUEST=GetMap&BBOX=-109.5,34.5,-106.5,39&LAYERS=2007fe_35_county&FORMAT=image/png&TRANSPARENT=FALSE&STYLES=&SRS=EPSG:4326&WIDTH=600&HEIGHT=900</a></small>
+					</p>
+					<p><a href="img/mckinley900.png"><img src="img/mckinley900.png" id="shrinky"/></a> Click to see full size image.
 					</p>
 				</div>
 
