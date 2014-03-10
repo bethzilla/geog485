@@ -47,124 +47,136 @@
 				<p class="question">
 					Question 1:
 				</p>
-				<p class="question-text">
-					What search engine did you use?
-				</p>
+				<div class="question-text">
+					<p>
+						What is the aspect ratio of this geographic region?
+					</p>
+				</div>
 				<div class="answer">
-					<p>Google
+					<p>
+						answer
 					</p>
 				</div>
 
 				<p class="question">
 					Question 2:
 				</p>
-				<p class="question-text">
-					How many ‘hits’ did you get?
-				</p>
+				<div class="question-text">
+					<p>
+						What would be the height (in whole pixels) for a map image for this region that is 600 pixels wide?
+					</p>
+				</div>
 				<div class="answer">
-					<p>About 324,000 results for the “SERVICE=WMS” search, and 61,100 results “REQUEST=GetCapabilities”.
+					<p>
+						Answer
 					</p>
 				</div>
 
 				<p class="question">
 					Question 3:
 				</p>
-				<p class="question-text">
-					How useful (generally in terms of getting a pointers to live WMS services [defined as a functioning GetCapabilities request]) were the ‘hits’? Pick two of the services that included live "GetCapabilities" requests that you found above, and answer the following questions about each.
-				</p>
 				<div class="question-text">
-					<ul class="answer">
-						<li>
-							What is the URL for the full GetCapabilities request to the service?
-						</li>
-						<li>
-							What is the Name of the service?
-						</li>
-						<li>
-							What Format(s) are available for GetMap requests from the service?
-						</li>
-						<li>
-							How many layers are included in the service (including nesting layers)?
-						</li>
-					</ul>
+					<p>
+						Formulate a WMS request that reflects the values determined in 1.1 and 1.2 above for the WMS service used above in the examples. Include in your answer both the actual WMS request and the returned map image.
+					</p>
 				</div>
+
 				<div class="answer">
-					<p>Neither of these search terms produced many actual live WMS services.  I mostly found more information about composing a GetCapabilities request, and found lists of services.</p>
-				</div>
-				<div class="answer">
-					<p></p>
+					<p>
+						answer
+					</p>
 				</div>
 
 				<p class="question">
-					Question 4 (service 2):
+					Question 4:
 				</p>
 				<div class="question-text">
-					<ul class="answer">
-						<li>
-							What is the URL for the full GetCapabilities request to the service?
-						</li>
-						<li>
-							What is the Name of the service?
-						</li>
-						<li>
-							What Format(s) are available for GetMap requests from the service?
-						</li>
-						<li>
-							How many layers are included in the service (including nesting layers)?
-						</li>
-					</ul>
+					<p>
+						Formulate a WMS request for a 900x600 pixel map image that represents the full 3-degree width of the geographic region, and is based upon the minimum Y value of 34.5 degrees North Latitude. Include in your answer both the WMS request and the returned map image.
+					</p>
 				</div>
 				<div class="answer">
-					<p></p>
+					<p>
+						answer
+					</p>
 				</div>
 
 				<p class="question">
-					Question 5 (for one of the layers in service 1):
+					Question 5:
 				</p>
 				<div class="question-text">
-					<ul class="answer">
-						<li>
-							What is the name of the layer?
-						</li>
-						<li>
-							What is the SRS of the layer?
-						</li>
-						<li>
-							What is the name of the projection that matches the SRS EPSG code?
-						</li>
-						<li>
-							What is the LatLonBoundingBox of the layer?
-						</li>
-					</ul>
+					<p>
+						Given a WMS that is represented by the following GetCapabilities request, formulate individual GetMap requests using the following parameters:
+
+						BBOX=-106.639,35.074,-106.609,35.094 WIDTH=600 HEIGHT=400
+
+						for each of the following layers: 0 (TNM_Large_Scale_Imagery) and 1 (1_foot_imagery) - yes - USGS just gave numbers as the layer names
+
+						Link
+
+						http://raster.nationalmap.gov/ArcGIS/services/TNM_Large_Scale_Imagery/
+						MapServer/WMSServer?request=GetCapabilities&service=WMS  
+					</p>
 				</div>
 				<div class="answer">
-					<p></p>
+					<p>
+						answer
+					</p>
 				</div>
 
 				<p class="question">
 					Question 6:
 				</p>
-				<p class="question-text">
-					
-				</p>
+				<div class="question-text">
+					<p>
+						Which layers return map images that display image content (i.e. return a non-blank image)?
+					</p>
+				</div>
 				<div class="answer">
 					<p>
-
+						answer
 					</p>
 				</div>
 
 				<p class="question">
 					Question 7:
 				</p>
-				<p class="question-text">
-					
-				</p>
-				<div class="answer">
-					<p>
 
+				<div class="question-text">
+					<p>
+						Sometimes when WMS layers are accessed, there is a limit on the map scales for which the map image will be returned. If a request is submitted for a map scale that is outside the range specified for a given layer, typically, a blank map image will be returned.
+					</p>
+					<p>
+						From examining the information for these layers in the GetCapabilities XML document - which element in each layer’s service metadata do you think provides information about the scales for which the layer will return map images containing data?
 					</p>
 				</div>
+				<div class="answer">
+					<p>
+						answer
+					</p>
+				</div>
+				<p class="question">
+					Question 8:
+				</p>
 
+				<div class="question-text">
+					<p>
+						Which map images contain data for each of the following map image widths (remember to adjust the image height to match the BBOX of the request)
+					</p>
+					<ul>
+						<li>
+							30 pixels
+						</li>
+						<li>
+							1200 pixels
+						</li>
+					</ul>
+				</div>
+				<div class="answer">
+					<p>
+						answer
+					</p>
+				</div>
 			</div>
 			<!-- End Main Content and Sidebar -->
 
