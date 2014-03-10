@@ -1,0 +1,45 @@
+beth-daviss-macbook-pro:m_3210816_NE_3_12_30_20131001_tif bethdavis$ gdalinfo m_3210816_NE_3_12_30_20131001.tif
+Driver: GTiff/GeoTIFF
+Files: m_3210816_NE_3_12_30_20131001.tif
+Size is 10900, 12600
+Coordinate System is:
+PROJCS["NAD83 / UTM zone 12N",
+    GEOGCS["NAD83",
+        DATUM["North_American_Datum_1983",
+            SPHEROID["GRS 1980",6378137,298.2572221010002,
+                AUTHORITY["EPSG","7019"]],
+            AUTHORITY["EPSG","6269"]],
+        PRIMEM["Greenwich",0],
+        UNIT["degree",0.0174532925199433],
+        AUTHORITY["EPSG","4269"]],
+    PROJECTION["Transverse_Mercator"],
+    PARAMETER["latitude_of_origin",0],
+    PARAMETER["central_meridian",-111],
+    PARAMETER["scale_factor",0.9996],
+    PARAMETER["false_easting",500000],
+    PARAMETER["false_northing",0],
+    UNIT["metre",1,
+        AUTHORITY["EPSG","9001"]],
+    AUTHORITY["EPSG","26912"]]
+Origin = (777750.000000000000000,3638070.000000000000000)
+Pixel Size = (0.300000000000000,-0.300000000000000)
+Metadata:
+  AREA_OR_POINT=Area
+  TIFFTAG_IMAGEDESCRIPTION=USDA-FSA-APFO-U.S. Forest Service Resource Program
+  TIFFTAG_RESOLUTIONUNIT=2 (pixels/inch)
+  TIFFTAG_SOFTWARE=UltraCam Aerial Radiometry Core 2.0.8.0
+  TIFFTAG_XRESOLUTION=72
+  TIFFTAG_YRESOLUTION=72
+Image Structure Metadata:
+  INTERLEAVE=PIXEL
+Corner Coordinates:
+Upper Left  (  777750.000, 3638070.000) (108d 1'56.80"W, 32d50'44.04"N)
+-->Lower Left  (  777750.000, 3634290.000) (108d 2' 0.88"W, 32d48'41.45"N)
+-->Upper Right (  781020.000, 3638070.000) (107d59'51.18"W, 32d50'41.04"N)
+Lower Right (  781020.000, 3634290.000) (107d59'55.31"W, 32d48'38.46"N)
+Center      (  779385.000, 3636180.000) (108d 0'56.04"W, 32d49'41.25"N)
+Band 1 Block=10900x12 Type=Byte, ColorInterp=Red
+Band 2 Block=10900x12 Type=Byte, ColorInterp=Green
+Band 3 Block=10900x12 Type=Byte, ColorInterp=Blue
+Band 4 Block=10900x12 Type=Byte, ColorInterp=Undefined
+beth-daviss-macbook-pro:m_3210816_NE_3_12_30_20131001_tif bethdavis$ 

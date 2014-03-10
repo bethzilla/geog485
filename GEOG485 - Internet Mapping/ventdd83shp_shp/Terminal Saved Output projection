@@ -1,0 +1,24 @@
+beth-daviss-macbook-pro:~ bethdavis$ cs2cs +proj=latlong +datum=WGS84 +to +proj=utm +zone=13 +datum=NAD27 -r
+31.798595 -109.043091
+117183.42	3525037.79 0.00
+36.940117 -103.170486
+662966.01	4089588.41 0.00
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>MynameKML file polygon</name>
+	<description>Some descrition</description>
+	<Style id="polyStyID_0">
+		<LineStyle>
+			<color>66000000</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>66ff8800</color>
+		</PolyStyle>
+	</Style>
+	<Placemark>
+		<name>distribution/range</name>
+		<styleUrl>#polyStyID_0</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						-106.62579,35.11447,0 -106.62437,35.11408,0 -106.62287,35.11405,0 -106.61519,35.11594,0 -106.61229,35.11651,0 -106.61236,35.12162,0 -106.61229,35.1246,0 -106.61172,35.12593,0 -106.60786,35.1305,0 -106.60646,35.1321,0 -106.60568,35.13309,0 -106.60534,35.1339,0 -106.60515,35.13543,0 -106.61182,35.13144,0 -106.61841,35.12725,0 -106.62132,35.12461,0 -106.62279,35.12216,0 -106.62421,35.11869,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>

@@ -1,0 +1,25 @@
+Last login: Fri Mar  7 22:45:42 on ttys000
+beth-daviss-macbook-pro:~ bethdavis$ cs2cs +proj=latlong +datum=WGS84 +to +proj=utm +zone=13 +datum=NAD27 -r
+31.221903 -109.044762
+114659.87	3461054.53 0.00
+36.969204 -102.994202
+678597.83	4093131.72 0.00
+
+
+cs2cs +proj=latlong +datum=WGS84 +to +proj=utm +zone=13 +datum=NAD83 -r
+35d14'19.29"N 107d36'30.67"W
+34d16'40.34"N 103d19'28.49"W
+
+
+
+
+
+
+
+
+
+
+
+
+
+

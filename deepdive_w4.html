@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" >
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Beth's UNM Geography 485L Home Page</title>
+		<link rel="stylesheet" type="text/css" href="css/foundation.css"/>
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/homepage.css" />
+		<script src="js/vendor/modernizr.js"></script>
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<style type="text/css">
+			#googft-mapCanvas {
+				height: 700px;
+				margin: auto;
+				padding: 0;
+				width: 800px
+			}
+			img {
+				height: 70px;
+			}
+			.imgleft {
+				float: left;
+			    margin-left: 0;
+			    margin-top: 0;
+			    padding-right: 1em;
+			}
+
+		</style>
+
+		<script type="text/javascript">
+			var map;
+			var infoWindow = new google.maps.InfoWindow();
+			var polyWindow = new google.maps.InfoWindow();
+			var DEFAULT_ICON_URL = 'http://g.etfv.co/http://www.google.com'
+
+			// EDIT: change this key to your own from the Google APIs Console
+			// https://code.google.com/apis/console/
+			var apiKey = 'AIzaSyAm9yWCV7JPCTHCJut8whOjARd7pwROFDQ';
+
+			// EDIT: Specify the table with location data and icon URLs
+			var tableID = '11LMe83Pj5n6OW8ocVohtHgZWdX4hS-9ikPayJFtX';
+
+			// Create variables for the columns you need to retrieve from the table
+			// EDIT this list as needed, then find and edit two places below.
+			var latitudeColumn = 'YCOORD'; //0
+			var longitudeColumn = 'XCOORD'; //1
+			var iconUrlColumn = 'Icon'; //2
+			var infowindowContentColumn = 'Name'; //3
+			var infowindowContentColumn1 = 'Address'; //4
+			var infowindowContentColumn2 = 'Phone'; //5
+			var infowindowContentColumn3 = 'Website';//6
+			var infowindowContentColumn4 = 'Thumbs'; //7
+
+			function createMarker(coordinate, url, content) {
+				var marker = new google.maps.Marker({
+					map : map,
+					position : coordinate,
+					icon : new google.maps.MarkerImage(url)
+				});
+				google.maps.event.addListener(marker, 'click', function(event) {
+					infoWindow.setPosition(coordinate);
+					infoWindow.setContent(content);
+					infoWindow.open(map);
+					map.panTo(this.getPosition());
+					map.setZoom(12);
+				});
+			};
+
+			function fetchData() {
+
+				// Construct a query to get data from the Fusion Table
+				// EDIT this list to include the variables for columns named above
+				var query = 'SELECT ' + latitudeColumn + ',' + longitudeColumn + ',' + iconUrlColumn + ',' + infowindowContentColumn + ',' + infowindowContentColumn1 + ',' + infowindowContentColumn2 + ',' + infowindowContentColumn3 + ',' + infowindowContentColumn4  + ' FROM ' + tableID;
+				var encodedQuery = encodeURIComponent(query);
+
+				// Construct the URL
+				var url = ['https://www.googleapis.com/fusiontables/v1/query'];
+				url.push('?sql=' + encodedQuery);
+				url.push('&key=' + apiKey);
+				url.push('&callback=?');
+
+				// Send the JSONP request using jQuery
+				$.ajax({
+					url : url.join(''),
+					dataType : 'jsonp',
+					success : onDataFetched
+				});
+			}
+			// this doesn't work
+			//var bounds = new google.maps.LatLngBounds();
+			
+			function onDataFetched(data) {
+				var rows = data['rows'];
+				var iconUrl;
+				var content;
+				var coordinate;
+
+				// Copy each row of data from the response into variables.
+				// Each column is present in the order listed in the query.
+				// Starting from 0.
+				// EDIT this if you've changed the columns, above.
+				for (var i in rows) {
+					coordinate = new google.maps.LatLng(rows[i][0], rows[i][1]);
+					iconUrl = rows[i][2];
+					//content = rows[i][3];
+					content = "<div class='imgleft'>" + "<div class='imgleft'><img src='" + rows[i][7] + "' /></div>" +"<div class='imgleft'><b>Name: </b>" + rows[i][3] + "<br /><b>Address:</b> " + rows[i][4] +"<br /><b>Phone:</b> " + rows[i][5] +"<br /><b>Website:</b> " + "<a href='" + rows[i][6] + "' target='_blank'>" + rows[i][6] + "</a>" + "</div></div>"
+					
+					
+					if (iconUrl) {// ensure not empty
+						createMarker(coordinate, iconUrl, content);
+					} else {
+						createMarker(coordinate, DEFAULT_ICON_URL, content);
+					}
+				}
+
+				//bounds.extend(coordinate);
+			}
+			
+
+			function initialize() {
+
+				fetchData();
+				// begin retrieving data from table, and put it on the map
+
+
+				map = new google.maps.Map(document.getElementById('googft-mapCanvas'), {
+					center : new google.maps.LatLng(34.301584241440516, -106.08330688476565),
+					zoom : 7,
+					mapTypeId : google.maps.MapTypeId.ROADMAP
+				});
+				//map.fitBounds(bounds);
+				
+				var buildingCoordinates = [new google.maps.LatLng(35.11447, -106.62579), new google.maps.LatLng(35.11408, -106.62437), new google.maps.LatLng(35.11405, -106.62287), new google.maps.LatLng(35.11594, -106.61519), new google.maps.LatLng(35.11651, -106.61229), new google.maps.LatLng(35.12162, -106.61236), new google.maps.LatLng(35.1246, -106.61229), new google.maps.LatLng(35.12593, -106.61172), new google.maps.LatLng(35.1305, -106.60786), new google.maps.LatLng(35.1321, -106.60646), new google.maps.LatLng(35.13309, -106.60568), new google.maps.LatLng(35.1339, -106.60534), new google.maps.LatLng(35.13543, -106.60515), new google.maps.LatLng(35.13144, -106.61182), new google.maps.LatLng(35.12725, -106.61841), new google.maps.LatLng(35.12461, -106.62132), new google.maps.LatLng(35.12216, -106.62279), new google.maps.LatLng(35.11869, -106.62421)];
+				var bldgPoly = new google.maps.Polygon({
+					paths : buildingCoordinates,
+					strokeColor : "#FF0000",
+					strokeOpacity : 0.8,
+					strokeWeight : 2,
+					fillColor : "#FF0000",
+					fillOpacity : 0.35,
+					url : "http://nmlegis.gov/lcs/legislation.aspx?Chamber=S&LegType=M&LegNo=81&year=14"
+				});
+				bldgPoly.setMap(map);
+				//var proc = "<a href='http://nmlegis.gov/lcs/legislation.aspx?Chamber=S&LegType=M&LegNo=81&year=14' target='_blank'>Albuquerque Brewery District</a>";
+				google.maps.event.addDomListener(bldgPoly, 'click', function() {
+					window.open(bldgPoly.url);
+				})
+				
+			}
+
+
+
+			google.maps.event.addDomListener(window, 'load', initialize);
+
+		</script>
+	</head>
+	<body>
+		<!-- Nav Bar -->
+
+		<div class="row">
+			<div class="large-12 columns">
+				<div class="nav-bar right">
+					<ul class="button-group radius round">
+						<li>
+							<a href="index.html" class="button">Home</a>
+						</li>
+						<li>
+							<a href="milestones.html" class="button">Milestones</a>
+						</li>
+						<li>
+							<a href="deepdives.html" class="button">Deep Dives</a>
+						</li>
+					</ul>
+				</div>
+				<h1>Geography 485L Deep Dive Page<!--<small>This is my blog. It's awesome.</small>--></h1>
+				<hr />
+			</div>
+		</div>
+
+		<!-- End Nav -->
+
+		<!-- Main Page Content and Sidebar -->
+
+		<div class="row">
+
+			<!-- Main Blog Content -->
+			<div class="large-12 columns">
+				<h3 class="bsection">Week 4 <small> February 12, 2014</small></h3>
+				<div id="googft-mapCanvas"></div>
+			</div>
+			<!-- End Main Content and Sidebar -->
+
+			<!-- Footer -->
+
+			<footer class="row">
+				<div class="large-12 columns">
+					<hr />
+					<div class="row">
+						<div class="large-6 columns">
+							<p>
+								© Beth Davis 2014.
+							</p>
+						</div>
+						<div class="large-6 columns">
+							<ul class="inline-list right">
+								<li>
+									<a href="index.html">Home</a>
+								</li>
+								<li>
+									<a href="milestones.html">Milestones</a>
+								</li>
+								<li>
+									<a href="deepdives.html">Deep Dives</a>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+
+			<script src="js/vendor/jquery.js"></script>
+			<script src="js/foundation.min.js"></script>
+			<script>
+				$(document).foundation();
+			</script>
+	</body>
+</html>
