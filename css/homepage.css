@@ -22,19 +22,22 @@ ul .answer {
 	padding-left: 1em;
 }
 #m3_embedmap {
-height:400px;
-width: 60%;
-margin-right: auto;
-margin-left: auto;
+	height: 400px;
+	width: 60%;
+	margin-right: auto;
+	margin-left: auto;
 }
 #m4_embedmap {
-height: 600px;
-width: 100%;
+	height: 600px;
+	width: 100%;
 }
 .iWindow {
 	width: 300px;
 	height: 60px;
 }
 /*p.short {
-	line-height:100%;
-}*/
+ line-height:100%;
+ }*/
+img {
+	border: 1px solid black;
+}

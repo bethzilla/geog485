@@ -5,6 +5,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="Shortcut Icon" href="favicon3.ico" type="image/x-icon">
 		<title>Beth's UNM Geography 485L Home Page</title>
 		<link rel="stylesheet" type="text/css" href="css/foundation.css"/>
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
@@ -28,9 +29,12 @@
 						<li>
 							<a href="deepdives.html" class="button">Deep Dives</a>
 						</li>
+						<li>
+							<a href="exams.html" class="button">Exams</a>
+						</li>
 					</ul>
 				</div>
-				<h1>Geography 485L Deep Dive Page<!--<small>This is my blog. It's awesome.</small>--></h1>
+				<br /><h3>Geography 485L Deep Dive Page</h3>
 				<hr />
 			</div>
 		</div>
@@ -77,7 +81,14 @@
 				</div>
 				<div class="answer">
 					<p>
-						<code>REQUEST=GetCapabilities</code> tells the server the type of request.  <code>SERVICE=WMS</code> tells the server this is a WMS request. 
+						<code>
+							REQUEST=GetCapabilities
+						</code>
+						tells the server the type of request.
+						<code>
+							SERVICE=WMS
+						</code>
+						tells the server this is a WMS request.
 					</p>
 				</div>
 
@@ -101,7 +112,9 @@
 					</p>
 				</div>
 				<div class="answer">
-					<p>The required parameters are:</p>
+					<p>
+						The required parameters are:
+					</p>
 					<ul class="answer">
 						<li>
 							REQUEST=GetMap, Indentifies type of request
@@ -131,7 +144,9 @@
 							FORMAT, type of file to return
 						</li>
 					</ul>
-					<p>If the GetMap request is formed correctly, an image of the map area will be returned. Transparency turns the background pixels invisible, so multiple layers can be viewed at the same time (i.e., roads on top of imagery). If transparency is not allowed then you will only see the top layer.</p>
+					<p>
+						If the GetMap request is formed correctly, an image of the map area will be returned. Transparency turns the background pixels invisible, so multiple layers can be viewed at the same time (i.e., roads on top of imagery). If transparency is not allowed then you will only see the top layer.
+					</p>
 				</div>
 				<p class="question">
 					Question 4
@@ -142,7 +157,9 @@
 					</p>
 				</div>
 				<div class="answer">
-					<p>GetCapabilites</p>
+					<p>
+						GetCapabilites
+					</p>
 				</div>
 				<p class="question">
 					Question 5
@@ -165,9 +182,15 @@
 				</div>
 				<div class="answer">
 					<ol>
-						<li>WMS, GetMap</li>
-						<li>WFS, GetFeature</li>
-						<li>WCS, Get Coverage</li>
+						<li>
+							WMS, GetMap
+						</li>
+						<li>
+							WFS, GetFeature
+						</li>
+						<li>
+							WCS, Get Coverage
+						</li>
 					</ol>
 				</div>
 				<p class="question">
@@ -211,82 +234,125 @@
 						Use the cs2cs utility to convert the following WGS84 Geographic Coordinates into UTM Zone 13, NAD83 coordinates. Include your cs2cs command and output in your writeup.
 						<ul class="question-text">
 							<li>
-								35°14′19.29″ N, 107°36′30.67″ W (Mount Taylor Summit)
+								35°14'19.29″ N, 107°36'30.67″ W (Mount Taylor Summit)
 							</li>
 							<li>
-								34°16′40.34″ N, 103°19′28.49″ W (Blackwater Draw)
+								34°16'40.34″ N, 103°19'28.49″ W (Blackwater Draw)
 							</li>
 						</ul>
-
+					</p>
+				</div>
+				<div class="answer">
+					<p>
+						<code>
+							$ cs2cs +proj=latlong +datum=WGS84 +to +proj=utm +zone=13 +datum=NAD83 -r
+							<br />
+							35d14'19.29"N&nbsp; 107d36'30.67"W
+							<br />
+							262633.94&nbsp; 3902632.48 0.00
+							<br />
+							34d16'40.34"N&nbsp; 103d19'28.49"W
+							<br />
+							654223.84&nbsp; 3794236.77 0.00
+						</code>
 					</p>
 				</div>
 
 				<p class="question">
 					Question 8
 				</p>
-				<div class="question-text"><p>
-					Retrieve the GetCapabilities XML response from the following WMS, and answer the following questions.
-					<br />
-					<a href="http://gstore.unm.edu/apps/rgis/datasets/715663ba-c1c3-414c-84a7-c671526f8316/services/ogc/wms?SERVICE=wms&REQUEST=GetCapabilities&VERSION=1.1.1">http://gstore.unm.edu/apps/rgis/datasets/715663ba-c1c3-414c-84a7-c671526f8316/services/ogc/wms?SERVICE=wms&REQUEST=GetCapabilities&AElig;</a>
+				<div class="question-text">
+					<p>
+						Retrieve the GetCapabilities XML response from the following WMS, and answer the following questions.
+						<br />
+						<a href="http://gstore.unm.edu/apps/rgis/datasets/715663ba-c1c3-414c-84a7-c671526f8316/services/ogc/wms?SERVICE=wms&REQUEST=GetCapabilities&VERSION=1.1.1">http://gstore.unm.edu/apps/rgis/datasets/715663ba-c1c3-414c-84a7-c671526f8316/services/ogc/wms?SERVICE=wms&REQUEST=GetCapabilities&AElig;</a>
+						<ul>
+							<li>
+								What is the Title of the service?
+							</li>
+							<li>
+								Who is the Contact Person for questions about the service?
+							</li>
+							<li>
+								What are the available image formats for the GetMap request for this service?
+							</li>
+							<li>
+								What are the SRS/CRS’s for which layers from this service are available (remember that nested layers inherit the SRS/CRS of their parent layers).
+							</li>
+						</ul>
+					</p>
+				</div>
+				<div class="answer">
 					<ul>
 						<li>
-							What is the Title of the service?
+							rgis Dataset (715663ba-c1c3-414c-84a7-c671526f8316)
 						</li>
 						<li>
-							Who is the Contact Person for questions about the service?
+							GStore Support, at the Earth Data Analysis Center
 						</li>
 						<li>
-							What are the available image formats for the GetMap request for this service?
+							image/png, image/gif, image/jpeg, image/png; mode=8bit, image/tiff, application/vnd.google-earth.kml+xml, application/vnd.google-earth.kmz
 						</li>
 						<li>
-							What are the SRS/CRS’s for which layers from this service are available (remember that nested layers inherit the SRS/CRS of their parent layers).
+							EPSG:4269, EPSG:4326, EPSG:4267, EPSG:26913, EPSG:26912, EPSG:26914, EPSG:26713, EPSG:26712, EPSG:26714, EPSG:3857
 						</li>
 					</ul>
-				</p>
-</div>
+				</div>
 				<p class="question">
 					Question 9
 				</p>
-				<div class="question-text"><p>
-					Formulate a GetMap request for the “tl_2010_35_bg10” layer from this service, for a 500x500 pixel map image that is 0.05-degrees wide and 0.05-degress high, with the SW corner of the map image located at 35°N and -106°45'E. Include in your write-up the complete GetMap request and the returned map image.
-				</p>  </div>
+				<div class="question-text">
+					<p>
+						Formulate a GetMap request for the “tl_2010_35_bg10” layer from this service, for a 500x500 pixel map image that is 0.05-degrees wide and 0.05-degress high, with the SW corner of the map image located at 35°N and -106°45'E. Include in your write-up the complete GetMap request and the returned map image.
+					</p>
+				</div>
 
-			</div>
-			<!-- End Main Content and Sidebar -->
+				<div class="answer">
+					<p>
+						<small><a href="http://gstore.unm.edu/apps/rgis/datasets/715663ba-c1c3-414c-84a7-c671526f8316/services/ogc/wms?VERSION=1.1.1&SERVICE=WMS&REQUEST=GetMap&BBOX=-106.75,35.00,-106.7,35.05&LAYERS=tl_2010_35_bg10&FORMAT=image/png&TRANSPARENT=FALSE&STYLES=&SRS=EPSG:4326&WIDTH=500&HEIGHT=500" target="_blank">http://gstore.unm.edu/apps/rgis/datasets/715663ba-c1c3-414c-84a7-c671526f8316/services/ogc/wms?VERSION=1.1.1&SERVICE=WMS&REQUEST=GetMap&BBOX=-106.75,35.00,-106.7,35.05&LAYERS=tl_2010_35_bg10&FORMAT=image/png&TRANSPARENT=FALSE&STYLES=&SRS=EPSG:4326&WIDTH=500&HEIGHT=500</a></small>
+					</p>
+					<p><img src="img/dd6.png" />
+					</p>
+				</div>
 
-			<!-- Footer -->
+				<!-- End Main Content and Sidebar -->
 
-			<footer class="row">
-				<div class="large-12 columns">
-					<hr />
-					<div class="row">
-						<div class="large-6 columns">
-							<p>
-								© Beth Davis 2014.
-							</p>
-						</div>
-						<div class="large-6 columns">
-							<ul class="inline-list right">
-								<li>
-									<a href="index.html">Home</a>
-								</li>
-								<li>
-									<a href="milestones.html">Milestones</a>
-								</li>
-								<li>
-									<a href="deepdives.html">Deep Dives</a>
-								</li>
+				<!-- Footer -->
 
-							</ul>
+				<footer class="row">
+					<div class="large-12 columns">
+						<hr />
+						<div class="row">
+							<div class="large-6 columns">
+								<p>
+									© Beth Davis 2014.
+								</p>
+							</div>
+							<div class="large-6 columns">
+								<ul class="inline-list right">
+									<li>
+										<a href="index.html">Home</a>
+									</li>
+									<li>
+										<a href="milestones.html">Milestones</a>
+									</li>
+									<li>
+										<a href="deepdives.html">Deep Dives</a>
+									</li>
+									<li>
+										<a href="exams.html">Exams</a>
+									</li>
+
+								</ul>
+							</div>
 						</div>
 					</div>
-				</div>
-			</footer>
+				</footer>
 
-			<script src="js/vendor/jquery.js"></script>
-			<script src="js/foundation.min.js"></script>
-			<script>
-				$(document).foundation();
-			</script>
+				<script src="js/vendor/jquery.js"></script>
+				<script src="js/foundation.min.js"></script>
+				<script>
+					$(document).foundation();
+				</script>
 	</body>
 </html>
