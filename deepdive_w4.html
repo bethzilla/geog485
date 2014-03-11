@@ -5,6 +5,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="Shortcut Icon" href="favicon3.ico" type="image/x-icon">
 		<title>Beth's UNM Geography 485L Home Page</title>
 		<link rel="stylesheet" type="text/css" href="css/foundation.css"/>
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
@@ -20,12 +21,13 @@
 			}
 			img {
 				height: 70px;
+				border: none;
 			}
 			.imgleft {
 				float: left;
-			    margin-left: 0;
-			    margin-top: 0;
-			    padding-right: 1em;
+				margin-left: 0;
+				margin-top: 0;
+				padding-right: 1em;
 			}
 
 		</style>
@@ -45,14 +47,22 @@
 
 			// Create variables for the columns you need to retrieve from the table
 			// EDIT this list as needed, then find and edit two places below.
-			var latitudeColumn = 'YCOORD'; //0
-			var longitudeColumn = 'XCOORD'; //1
-			var iconUrlColumn = 'Icon'; //2
-			var infowindowContentColumn = 'Name'; //3
-			var infowindowContentColumn1 = 'Address'; //4
-			var infowindowContentColumn2 = 'Phone'; //5
-			var infowindowContentColumn3 = 'Website';//6
-			var infowindowContentColumn4 = 'Thumbs'; //7
+			var latitudeColumn = 'YCOORD';
+			//0
+			var longitudeColumn = 'XCOORD';
+			//1
+			var iconUrlColumn = 'Icon';
+			//2
+			var infowindowContentColumn = 'Name';
+			//3
+			var infowindowContentColumn1 = 'Address';
+			//4
+			var infowindowContentColumn2 = 'Phone';
+			//5
+			var infowindowContentColumn3 = 'Website';
+			//6
+			var infowindowContentColumn4 = 'Thumbs';
+			//7
 
 			function createMarker(coordinate, url, content) {
 				var marker = new google.maps.Marker({
@@ -73,7 +83,7 @@
 
 				// Construct a query to get data from the Fusion Table
 				// EDIT this list to include the variables for columns named above
-				var query = 'SELECT ' + latitudeColumn + ',' + longitudeColumn + ',' + iconUrlColumn + ',' + infowindowContentColumn + ',' + infowindowContentColumn1 + ',' + infowindowContentColumn2 + ',' + infowindowContentColumn3 + ',' + infowindowContentColumn4  + ' FROM ' + tableID;
+				var query = 'SELECT ' + latitudeColumn + ',' + longitudeColumn + ',' + iconUrlColumn + ',' + infowindowContentColumn + ',' + infowindowContentColumn1 + ',' + infowindowContentColumn2 + ',' + infowindowContentColumn3 + ',' + infowindowContentColumn4 + ' FROM ' + tableID;
 				var encodedQuery = encodeURIComponent(query);
 
 				// Construct the URL
@@ -89,9 +99,10 @@
 					success : onDataFetched
 				});
 			}
+
 			// this doesn't work
 			//var bounds = new google.maps.LatLngBounds();
-			
+
 			function onDataFetched(data) {
 				var rows = data['rows'];
 				var iconUrl;
@@ -106,9 +117,8 @@
 					coordinate = new google.maps.LatLng(rows[i][0], rows[i][1]);
 					iconUrl = rows[i][2];
 					//content = rows[i][3];
-					content = "<div class='imgleft'>" + "<div class='imgleft'><img src='" + rows[i][7] + "' /></div>" +"<div class='imgleft'><b>Name: </b>" + rows[i][3] + "<br /><b>Address:</b> " + rows[i][4] +"<br /><b>Phone:</b> " + rows[i][5] +"<br /><b>Website:</b> " + "<a href='" + rows[i][6] + "' target='_blank'>" + rows[i][6] + "</a>" + "</div></div>"
-					
-					
+					content = "<div class='imgleft'>" + "<div class='imgleft'><img src='" + rows[i][7] + "' /></div>" + "<div class='imgleft'><b>Name: </b>" + rows[i][3] + "<br /><b>Address:</b> " + rows[i][4] + "<br /><b>Phone:</b> " + rows[i][5] + "<br /><b>Website:</b> " + "<a href='" + rows[i][6] + "' target='_blank'>" + rows[i][6] + "</a>" + "</div></div>"
+
 					if (iconUrl) {// ensure not empty
 						createMarker(coordinate, iconUrl, content);
 					} else {
@@ -118,13 +128,11 @@
 
 				//bounds.extend(coordinate);
 			}
-			
 
 			function initialize() {
 
 				fetchData();
 				// begin retrieving data from table, and put it on the map
-
 
 				map = new google.maps.Map(document.getElementById('googft-mapCanvas'), {
 					center : new google.maps.LatLng(34.301584241440516, -106.08330688476565),
@@ -132,7 +140,7 @@
 					mapTypeId : google.maps.MapTypeId.ROADMAP
 				});
 				//map.fitBounds(bounds);
-				
+
 				var buildingCoordinates = [new google.maps.LatLng(35.11447, -106.62579), new google.maps.LatLng(35.11408, -106.62437), new google.maps.LatLng(35.11405, -106.62287), new google.maps.LatLng(35.11594, -106.61519), new google.maps.LatLng(35.11651, -106.61229), new google.maps.LatLng(35.12162, -106.61236), new google.maps.LatLng(35.1246, -106.61229), new google.maps.LatLng(35.12593, -106.61172), new google.maps.LatLng(35.1305, -106.60786), new google.maps.LatLng(35.1321, -106.60646), new google.maps.LatLng(35.13309, -106.60568), new google.maps.LatLng(35.1339, -106.60534), new google.maps.LatLng(35.13543, -106.60515), new google.maps.LatLng(35.13144, -106.61182), new google.maps.LatLng(35.12725, -106.61841), new google.maps.LatLng(35.12461, -106.62132), new google.maps.LatLng(35.12216, -106.62279), new google.maps.LatLng(35.11869, -106.62421)];
 				var bldgPoly = new google.maps.Polygon({
 					paths : buildingCoordinates,
@@ -148,9 +156,7 @@
 				google.maps.event.addDomListener(bldgPoly, 'click', function() {
 					window.open(bldgPoly.url);
 				})
-				
 			}
-
 
 
 			google.maps.event.addDomListener(window, 'load', initialize);
@@ -173,9 +179,12 @@
 						<li>
 							<a href="deepdives.html" class="button">Deep Dives</a>
 						</li>
+						<li>
+							<a href="exams.html" class="button">Exams</a>
+						</li>
 					</ul>
 				</div>
-				<h1>Geography 485L Deep Dive Page<!--<small>This is my blog. It's awesome.</small>--></h1>
+				<br /><h3>Geography 485L Deep Dive Page</h3>
 				<hr />
 			</div>
 		</div>
@@ -189,6 +198,10 @@
 			<!-- Main Blog Content -->
 			<div class="large-12 columns">
 				<h3 class="bsection">Week 4 <small> February 12, 2014</small></h3>
+				<p><strong>NM Craft Beer Brewers</strong>
+				<br /> This map depicts the members of the <a href="http://nmbeer.org/">NM Brewers Guild,</a> and also includes a link to the <a href="http://nmlegis.gov/lcs/default.aspx" target="_blank">NM State Legislature</a> Memorial which designates the Albuquerque area north of Candelaria road, west of the North Diversion Channel, east of Interstate 25 and south of Jefferson street as the 'Albuquerque Brewery District'</p>
+				
+				<p>Support Small Business, <a href="http://www.mvd.newmexico.gov/dwi-information.aspx" target="_blank">responsibly!</a></p>
 				<div id="googft-mapCanvas"></div>
 			</div>
 			<!-- End Main Content and Sidebar -->
@@ -214,6 +227,9 @@
 								</li>
 								<li>
 									<a href="deepdives.html">Deep Dives</a>
+								</li>
+								<li>
+									<a href="exams.html">Exams</a>
 								</li>
 
 							</ul>

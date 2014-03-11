@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" >
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="Shortcut Icon" href="favicon3.ico" type="image/x-icon">
+		<title>Beth's UNM Geography 485L Home Page</title>
+		<link rel="stylesheet" type="text/css" href="css/foundation.css"/>
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/homepage.css" />
+		<script src="js/vendor/modernizr.js"></script>
+
+	</head>
+	<body>
+		<!-- Nav Bar -->
+
+		<div class="row">
+			<div class="large-12 columns">
+				<div class="nav-bar right">
+					<ul class="button-group radius round">
+						<li>
+							<a href="index.html" class="button">Home</a>
+						</li>
+						<li>
+							<a href="milestones.html" class="button">Milestones</a>
+						</li>
+						<li>
+							<a href="deepdives.html" class="button">Deep Dives</a>
+						</li>
+						<li>
+							<a href="exams.html" class="button">Exams</a>
+						</li>
+					</ul>
+				</div>
+				<br /><h3>Geography 485L Midterm</h3>
+				<hr />
+			</div>
+		</div>
+
+		<!-- End Nav -->
+
+		<!-- Main Page Content and Sidebar -->
+
+		<div class="row">
+
+			<!-- Main Blog Content -->
+			<div class="large-12 columns">
+				<h3 class="bsection">Week 8 <small> March 12, 2014</small></h3>
+
+				<p class="question">
+					Question 1
+				</p>
+				<div class="question-text">
+					<p>
+						Which command line utility would you use to determine the following:
+					</p>
+					<p>
+						The spatial extent of a GML file
+					</p>
+				</div>
+				<div class="answer">
+					<p>
+						Answer
+					</p>
+				</div>
+				<div class="question-text">
+					<p>
+						The spatial reference system of a raster file in the format of a GeoTIFF
+					</p>
+				</div>
+				<div class="answer">
+					<p>
+						Answer
+					</p>
+				</div>
+
+				<p class="question">
+					Question 2
+				</p>
+				<div class="question-text">
+					<p>
+						What combination of OGC Service and Request (e.g. SERVICE=WMS&REQUEST=GetFeatureInfo) would you use to perform the following?
+					</p>
+					<ol>
+						<li>
+							Determine the spatial extent of an available layer from a Web Map Service.
+						</li>
+						<li>
+							Obtain a list of coverages from a Web Coverage service.
+						</li>
+						<li>
+							Determine what file formats are supported by a Web Feature Service for the delivery of available data types (i.e. layers)
+						</li>
+						<li>
+							Retrieve a map image from a Web Map Service
+						</li>
+						<li>
+							Retrieve data from an available coverage from a Web Coverage Service￿
+						</li>
+
+					</ol>
+				</div>
+				<div class="answer">
+					<ol>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ol>
+				</div>
+
+				<p class="question">
+					Question 3
+				</p>
+				<div class="question-text">
+					<p>
+						Use the cs2cs command line utility to convert the following latitude-longitude coordinates (WGS84) to UTM, Zone 13N, NAD83 coordinates:
+					</p>
+					<ul>
+						<li>
+							35.682180 North Latitude -105.939670 East Longitude (New Mexico State Capitol)
+						</li>
+						<li>
+							34.891983 North Latitude -107.930153 East Longitude (El Malpais National Monument)
+						</li>
+					</ul>
+				</div>
+				<div class="answer">
+					<p>
+						answer
+					</p>
+				</div>
+				<p class="question">
+					Question 4
+				</p>
+				<div class="question-text">
+					<p>
+						Perform the following WMS GetCapabilities request:
+						<br />
+						<a href="http://neowms.sci.gsfc.nasa.gov/wms/wms?version=1.1.1&service=WMS&request=GetCapabilities" target="_blank">http://neowms.sci.gsfc.nasa.gov/wms/wms?version=1.1.1&service=WMS&request=GetCapabilities</a>
+						<br />
+						And answer the following questions:
+					</p>
+					<ol>
+						<li>
+							What is the name of the service?
+						</li>
+						<li>
+							What file formats are supported by the GetMap request?
+						</li>
+						<li>
+							What are the names of three of the layers included in the service?
+						</li>
+					</ol>
+
+				</div>
+				<div class="answer">
+					<ol>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ol>
+				</div>
+				<p class="question">
+					Question 5
+				</p>
+				<div class="question-text">
+					<p>
+						Compose a GetMap request for the WMS referenced in Question 4 that includes the following characteristics:
+						<ul>
+							<li>
+								JPEG image format
+							</li>
+							<li>
+								1200 pixels wide (you will need to calculate the height based upon the aspect ratio of the bounding box)
+							</li>
+							<li>
+								BoundingBox (EPSG:4326): Min X = -128 East Longitude, Min Y = 21.5 North Latitude, Max X = -62 East Longitude, Max Y = 54.5 North Latitude
+							</li>
+							<li>
+								Layer to be mapped = “MOD_LSTD_CLIM_M”
+							</li>
+						</ul>
+						Include in your answer both the complete WMS GetMap request and the resulting map image that is returned.
+					</p>
+				</div>
+				<div class="answer">
+					<p>
+						answer
+					</p>
+				</div>
+				<p class="question">
+					Question 6:
+				</p>
+				<div class="question-text">
+					<p>
+						From the XML GetCapabilities returned by the following WFS request answer the following questions:
+						<a href="http://services.nationalmap.gov/arcgis/services/WFS/transportation/MapServer/WFSServer?request=GetCapabilities&service=WFS" target="_blank">http://services.nationalmap.gov/arcgis/services/WFS/transportation/MapServer/WFSServer?request=GetCapabilities&service=WFS</a>
+					</p>
+					<ol>
+						<li>
+							What is the title for this service?
+						</li>
+						<li>
+							What file format(s) are supported by this service’s GetFeature request?
+						</li>
+						<li>
+							What is the DefaultSRS or the FeatureType named “WFS_transportation:Interstate”?
+						</li>
+						<li>
+							What is the WGS84BoundingBox of the FeatureType named “WFS_transportation:Interstate”?
+						</li>
+
+					</ol>
+				</div>
+				<div class="answer">
+					<ol>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ol>
+				</div>
+				<p class="question">
+					Question 7
+				</p>
+				<div class="question-text">
+					<p>
+						From the XML GetCapabilities returned by the following WCS request answer the following questions:
+						<br />
+						<a href="http://sdf.ndbc.noaa.gov/thredds/wcs/hfradar_uswc_500m?request=GetCapabilities&version=1.0.0&service=WCS" target="_blank">http://sdf.ndbc.noaa.gov/thredds/wcs/hfradar_uswc_500m?request=GetCapabilities&version=1.0.0&service=WCS</a>
+					</p>
+					<ol>
+						<li>
+							What is the description of the v coverage?
+						</li>
+						<li>
+							How many coverages are available from this service?
+						</li>
+
+					</ol>
+				</div>
+				<div class="answer">
+					<ol>
+						<li></li>
+						<li></li>
+					</ol>
+				</div>
+
+				<p class="question">
+					Question 8a
+				</p>
+				<div class="question-text">
+					<p>
+						Formulate a complete DescribeCoverage request for the v coverage for the WCS service ref- erenced in Question 7.
+					</p>
+				</div>
+				<div class="answer">
+					<p>
+						DescribeCoverage request
+					</p>
+				</div>
+				<p class="question">
+					Question 8b
+				</p>
+				<div class="question-text">
+					<p>
+						From the returned XML document answer the following questions:
+					</p>
+					<ol>
+						<li>
+							What is the spatial domain for the ‘v‘ coverage?
+						</li>
+						<li>
+							What file formats are available for ‘v‘ data delivered by this service?
+						</li>
+						<li>
+							What SRS(s) are supported by this service for requested data delivery?
+						</li>
+
+					</ol>
+				</div>
+
+				<div class="answer">
+					<ol>
+						<li></li>
+						<li></li>
+						<li></li>
+
+					</ol>
+				</div>
+
+				<!-- End Main Content and Sidebar -->
+
+				<!-- Footer -->
+
+				<footer class="row">
+					<div class="large-12 columns">
+						<hr />
+						<div class="row">
+							<div class="large-6 columns">
+								<p>
+									© Beth Davis 2014.
+								</p>
+							</div>
+							<div class="large-6 columns">
+								<ul class="inline-list right">
+									<li>
+										<a href="index.html">Home</a>
+									</li>
+									<li>
+										<a href="milestones.html">Milestones</a>
+									</li>
+									<li>
+										<a href="deepdives.html">Deep Dives</a>
+									</li>
+									<li>
+										<a href="exams.html">Exams</a>
+									</li>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</footer>
+
+				<script src="js/vendor/jquery.js"></script>
+				<script src="js/foundation.min.js"></script>
+				<script>
+					$(document).foundation();
+				</script>
+	</body>
+</html>
