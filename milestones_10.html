@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" >
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="Shortcut Icon" href="favicon3.ico" type="image/x-icon">
+		<title>Beth's UNM Geography 485L Home Page</title>
+		<link rel="stylesheet" type="text/css" href="css/foundation.css"/>
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/homepage.css" />
+		<script src="js/vendor/modernizr.js"></script>
+		<!--OpenLayers stuff-->
+
+		<script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
+		<script type="text/javascript">
+			// define global variables
+			var lon = -106.5;
+			var lat = 36;
+			var zoom = 3;
+			var map;
+			var layer;
+
+			// =============== Initialization function ===================
+			function init() {
+				map = new OpenLayers.Map('embedmap');
+
+				// =========== OSM Map ====================
+				layer = new OpenLayers.Layer.OSM("Open Street Map");
+				map.addLayer(layer);
+
+				map.setCenter(new OpenLayers.LonLat(lon, lat).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject()), zoom);
+			}
+
+			// =============== End of Initialization Function ============
+
+			console.log('OpenLayers is damn touchy');
+		</script>
+
+	</head>
+	<body onload="init()">
+		<!-- Nav Bar -->
+
+		<div class="row">
+			<div class="large-12 columns">
+				<div class="nav-bar right">
+					<ul class="button-group radius round">
+						<li>
+							<a href="index.html" class="button">Home</a>
+						</li>
+						<li>
+							<a href="milestones.html" class="button">Milestones</a>
+						</li>
+						<li>
+							<a href="deepdives.html" class="button">Deep Dives</a>
+						</li>
+						<li>
+							<a href="exams.html" class="button">Exams</a>
+						</li>
+					</ul>
+				</div>
+				<br />
+				<h3>Geography 485L Milestone Page<!--<small>This is my blog. It's awesome.</small>--></h3>
+				<hr />
+			</div>
+		</div>
+
+		<!-- End Nav -->
+
+		<!-- Main Page Content and Sidebar -->
+
+		<div class="row">
+
+			<!-- Main Blog Content -->
+			<div class="large-12 columns">
+				<h3 class="bsection">Week 10 <small> March 26, 2014</small></h3>
+
+				<p class="question">
+					Question 1
+				</p>
+				<p class="question-text">
+					What area do you want to depict in your map? Why?
+				</p>
+				<p class="question">
+					Question 2
+				</p>
+				<p class="question-text">
+					What is the center point (latitude and longitude) of your area of interest?
+				</p>
+				<p class="question">
+					Question 3
+				</p>
+				<p class="question-text">
+					What base map(s) did you select for use in your map? Why?
+				</p>
+				<p class="question">
+					Question 4
+				</p>
+				<p class="question-text">
+					What is the scale of your map (local, regional, continental, global)? How will this translate into your selection of an appropriate default zoom level for your map?
+
+				</p>
+				<p class="question">
+					Question 5
+				</p>
+				<p class="question-text">
+					Embed the OpenLayers Map in your writeup (included with the answers to questions 1-4 above) that is based upon your responses to questions 1-4 above.
+				</p>
+				<p>
+					Hello World!
+				</p>
+				<div id="embedmap"></div>
+
+			</div>
+			<!-- End Main Content and Sidebar -->
+
+			<!-- Footer -->
+
+			<footer class="row">
+				<div class="large-12 columns">
+					<hr />
+					<div class="row">
+						<div class="large-6 columns">
+							<p>
+								© Beth Davis 2014.
+							</p>
+						</div>
+						<div class="large-6 columns">
+							<ul class="inline-list right">
+								<li>
+									<a href="index.html">Home</a>
+								</li>
+								<li>
+									<a href="milestones.html">Milestones</a>
+								</li>
+								<li>
+									<a href="deepdives.html">Deep Dives</a>
+								</li>
+
+								<li>
+									<a href="exams.html" >Exams</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+
+			<script src="js/vendor/jquery.js"></script>
+			<script src="js/foundation.min.js"></script>
+			<script>
+				$(document).foundation();
+			</script>
+	</body>
+</html>

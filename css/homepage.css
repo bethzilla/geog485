@@ -1,6 +1,3 @@
-body {
-
-}
 h3.bsection {
 	color: #ED5F34;
 }
@@ -31,6 +28,14 @@ ul .answer {
 	height: 600px;
 	width: 100%;
 }
+#m10_embedmap {
+	height: 400px;
+	width: 60%;
+}
+#embedmap {
+	width: 100%;
+	height: 500px
+}
 .iWindow {
 	width: 300px;
 	height: 60px;
@@ -38,7 +43,7 @@ ul .answer {
 /*p.short {
  line-height:100%;
  }*/
-img {
+.answer img {
 	border: 1px solid black;
 }
 .wordwrap {
