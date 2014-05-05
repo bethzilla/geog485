@@ -30,7 +30,8 @@
 				//map = new OpenLayers.Map( 'map' );
 
 				map = new OpenLayers.Map('map', {
-					projection : new OpenLayers.Projection("EPSG:102113"),
+					//projection : new OpenLayers.Projection("EPSG:102113"),
+					projection: new OpenLayers.Projection('EPSG:3857'),
 					displayProjection : new OpenLayers.Projection("EPSG:4326"),
 					units : "m",
 					numZoomLevels : 21,
@@ -40,27 +41,20 @@
 
 				// =========== OSM Map ====================
 				layer = new OpenLayers.Layer.OSM("Open Street Map");
-				map.addLayer(layer);
 
 				// =========== Google ====================
-				/*gphy = new OpenLayers.Layer.Google("Google Physical", {
+				
+
+                gphy = new OpenLayers.Layer.Google("Google Physical", {
 					type : google.maps.MapTypeId.TERRAIN
 				});
 				ghyb = new OpenLayers.Layer.Google("Google Hybrid", {
 					type : google.maps.MapTypeId.HYBRID,
 					numZoomLevels : 20
 				});
-				gmap = new OpenLayers.Layer.Google("Google Streets", // the default
-				{
-					numZoomLevels : 20
-				});
-				
-				gsat = new OpenLayers.Layer.Google("Google Satellite", {
-					type : google.maps.MapTypeId.SATELLITE,
-					numZoomLevels : 22
-				});*/
 
-				//map.addLayers([gphy, ghyb]);
+				map.addLayers([layer, gphy, ghyb]);
+		
 
 				// =========== define ArcGIS layers ====
 				previewLayer = new OpenLayers.Layer.ArcGIS93Rest("Appalachian Trail centerline", service + "/MapServer/export", {
@@ -130,18 +124,21 @@
 				<p class="question-text">
 					What area do you want to depict in your map? Why?
 				</p>
+				<div class="answer"><p>I set the initial bounds of the map to show the extent of the Appalachian Trail in the eastern United States. I've dreamed about dropping out of my life for 6 months or a year to hike this trail.</p></div>
 				<p class="question">
 					Question 2
 				</p>
 				<p class="question-text">
 					What is the center point (latitude and longitude) of your area of interest?
 				</p>
+				<div class="answer"><p>Latitude: 4950000<br>Longitude: -8520000<br>(EPSG:900913)</p></div>
 				<p class="question">
 					Question 3
 				</p>
 				<p class="question-text">
 					What base map(s) did you select for use in your map? Why?
 				</p>
+				<div class="answer"><p>The Open Street Map baselayer is default for this map, because it plays nicely with the REST service of the trail centerline.  The Google physical terrain and satellite hybrid layers are probably more appropriate for the intent of the map (mountain trail), but because the Google maps API must be brought in separately from the OpenLayers API to use them as basemaps, the trail feature does not zoom smoothly with the map. There are also bugs with the layerswitcher when one of the Google basemaps are selected.  These are known OpenLayers issues that I have not been able to resolve in my map.</p></div>
 				<p class="question">
 					Question 4
 				</p>
@@ -149,15 +146,15 @@
 					What is the scale of your map (local, regional, continental, global)? How will this translate into your selection of an appropriate default zoom level for your map?
 
 				</p>
+				<div class="answer"><p>The scale of this map is regional; the trail extends from Georgia to Maine.  The code for the map calls for the map to be zoomed to my defined bounds, but this translates to a zoom level of about 5. </p></div>
 				<p class="question">
 					Question 5
 				</p>
 				<p class="question-text">
 					Embed the OpenLayers Map in your writeup (included with the answers to questions 1-4 above) that is based upon your responses to questions 1-4 above.
 				</p>
-				<p>
-					Hello World!
-				</p>
+				<div class="answer"><p></p></div>
+
 				<div id="map"></div>
 
 			</div>
