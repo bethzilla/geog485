@@ -15,14 +15,13 @@
 		<!--OpenLayers stuff-->
 
 		<script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
-		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 		<script type="text/javascript">
 			// define global variables
 			var lon = -106.5;
 			var lat = 36;
 			var zoom = 3;
 			var map;
-			var layer, previewLayer, gphy, gmap, ghyb, gsat;
+			var layer, countiesLayer, indlandLayer, federallandsLayer, previewLayer;
 			var service = "http://data1.commons.psu.edu/ArcGIS/rest/services/pasda/AppalachianTrail";
 
 			// =============== Initialization function ===================
@@ -42,33 +41,52 @@
 				layer = new OpenLayers.Layer.OSM("Open Street Map");
 				map.addLayer(layer);
 
-				// =========== Google ====================
-				/*gphy = new OpenLayers.Layer.Google("Google Physical", {
-					type : google.maps.MapTypeId.TERRAIN
+				// =========== USGS National Atlas WMS ====
+				// from USGS National Atlas: http://webservices.nationalatlas.gov/wms/boundaries?SERVICE=WMS&REQUEST=GetCapabilities
+				countiesLayer = new OpenLayers.Layer.WMS("US Counties", "http://webservices.nationalatlas.gov/wms?", {
+					layers : "counties",
+					version : '1.3.0',
+					transparent : 'TRUE'
+				}, {
+					isBaseLayer : false,
+					visibility : false
 				});
-				ghyb = new OpenLayers.Layer.Google("Google Hybrid", {
-					type : google.maps.MapTypeId.HYBRID,
-					numZoomLevels : 20
-				});
-				gmap = new OpenLayers.Layer.Google("Google Streets", // the default
-				{
-					numZoomLevels : 20
-				});
-				
-				gsat = new OpenLayers.Layer.Google("Google Satellite", {
-					type : google.maps.MapTypeId.SATELLITE,
-					numZoomLevels : 22
-				});*/
+				map.addLayer(countiesLayer);
 
-				//map.addLayers([gphy, ghyb]);
+				indlanLayer = new OpenLayers.Layer.WMS("Indian Lands", "http://webservices.nationalatlas.gov/wms?", {
+					layers : "indlan",
+					version : '1.3.0',
+					transparent : 'TRUE'
+				}, {
+					isBaseLayer : false,
+					visibility : false
+				});
+				map.addLayer(indlanLayer);
 
-				// =========== define ArcGIS layers ====
+				federallandsLayer = new OpenLayers.Layer.WMS("US Federal Lands", "http://webservices.nationalatlas.gov/wms?", {
+					layers : "federallands",
+					version : '1.3.0',
+					transparent : 'TRUE'
+				}, {
+					isBaseLayer : false,
+					visibility : false
+				});
+				map.addLayer(federallandsLayer);
+
+				/*map.setCenter(
+				new OpenLayers.LonLat(lon, lat).transform(
+				new OpenLayers.Projection("EPSG:4326"),
+				map.getProjectionObject()
+				), zoom
+				);*/
+
+				// define ArcGIS layers
 				previewLayer = new OpenLayers.Layer.ArcGIS93Rest("Appalachian Trail centerline", service + "/MapServer/export", {
 					layers : "show:0",
 					transparent : true
 				}, {
 					isBaseLayer : false,
-					visibility : true
+					visibility : false
 				});
 				map.addLayer(previewLayer);
 
