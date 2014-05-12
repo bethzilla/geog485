@@ -38,7 +38,15 @@ ul .answer {
 }
 #map {
 	width: 100%;
+	height: 725px
+}
+#OLmap1 {
+	width: 100%;
 	height: 500px
+}
+#OLmap2 {
+	width: 100%;
+	height: 700px
 }
 .iWindow {
 	width: 300px;

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" >
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="Shortcut Icon" href="favicon3.ico" type="image/x-icon">
+		<title>Beth's UNM Geography 485L Home Page</title>
+		<link rel="stylesheet" type="text/css" href="css/foundation.css"/>
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/homepage.css" />
+
+		<script src="js/vendor/modernizr.js"></script>
+		<!--OpenLayers stuff-->
+
+		<script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript">
+			// define global variables
+			var lon = -106.5;
+			var lat = 36;
+			var zoom = 3;
+			var map;
+			var layer, wms, shelterKml, previewLayer, gphy, gmap, ghyb, gsat;
+			var clingman, guyot, wash, roan, damascus;
+			var service = "http://data1.commons.psu.edu/ArcGIS/rest/services/pasda/AppalachianTrail";
+
+			// =============== Initialization function ===================
+			function init() {
+				//map = new OpenLayers.Map( 'map' );
+
+				map = new OpenLayers.Map('map', {
+					//projection : new OpenLayers.Projection("EPSG:102113"),
+					projection : new OpenLayers.Projection('EPSG:3857'),
+					displayProjection : new OpenLayers.Projection("EPSG:4326"),
+					units : "m",
+					numZoomLevels : 21,
+					maxResolution : 156543.0339,
+					maxExtent : new OpenLayers.Bounds(-9590000, 4000000, -7450000, 5900000)
+				});
+
+				//styles
+				SheltersStyle = {
+					pointRadius: 8,
+					fillColor: "#000000",
+					fillOpacity: .75,
+					strokeOpacity: 1,
+					strokeColor: "#000000"
+				},
+				ClingmanStyle = {
+					pointRadius : 10,
+					fillColor : "#d8fe08",
+					fillOpacity : .75,
+					strokeOpacity : 1,
+					strokeColor : "#d8fe08",
+				};
+				GuyotStyle = {
+					pointRadius : 10,
+					fillColor : "#08fef7",
+					fillOpacity : .75,
+					strokeOpacity : 1,
+					strokeColor : "#08fef7",
+				};
+				WashingtonStyle = {
+					pointRadius : 10,
+					fillColor : "#0881fe",
+					fillOpacity : .75,
+					strokeOpacity : 1,
+					strokeColor : "#0881fe"
+				};
+				RoanHighStyle = {
+					pointRadius : 10,
+					fillColor : "#fe08ce",
+					fillOpacity : .75,
+					strokeOpacity : 1,
+					strokeColor : "#fe08ce"
+				};
+				DamascusStyle = {
+					pointRadius : 10,
+					fillColor : "#fe1708",
+					fillOpacity : .75,
+					strokeOpacity : 1,
+					strokeColor : "#fe1708"
+				};
+
+				// =========== OSM Map ====================
+				layer = new OpenLayers.Layer.OSM("Open Street Map");
+
+				// =========== Google ====================
+
+				gphy = new OpenLayers.Layer.Google("Google Physical", {
+					type : google.maps.MapTypeId.TERRAIN
+				});
+				ghyb = new OpenLayers.Layer.Google("Google Hybrid", {
+					type : google.maps.MapTypeId.HYBRID,
+					numZoomLevels : 20
+				});
+
+				map.addLayers([layer, gphy, ghyb]);
+
+				// =========== define ArcGIS layers ====
+				/*previewLayer = new OpenLayers.Layer.ArcGIS93Rest("Appalachian Trail centerline", service + "/MapServer/export", {
+				layers : "show:0",
+				transparent : true
+				}, {
+				isBaseLayer : false,
+				visibility : true
+				});
+				map.addLayer(previewLayer);*/
+
+				//change arcgis layer to wms
+				var wms = new OpenLayers.Layer.WMS("Appalachian Trail centerline (WMS)", "http://data1.commons.psu.edu/arcgis/services/pasda/AppalachianTrail/MapServer/WMSServer?", {
+					layers : "0",
+					transparent : true
+				}, {
+					//opacity : 0.5,
+					singleTile : true
+				});
+				map.addLayer(wms);
+
+				// =============== KML (layer) ============
+				sheltersKml = new OpenLayers.Layer.Vector("Trail Shelters", {
+					projection : map.displayProjection,
+					style : SheltersStyle,
+					visibility : true,
+					strategies : [new OpenLayers.Strategy.Fixed()],
+					protocol : new OpenLayers.Protocol.HTTP({
+						url : "http://ezxile.github.io/GEOG485/SF_walk.kml",
+						format : new OpenLayers.Format.KML({
+							extractAttributes : true
+						})
+					})
+				});
+				map.addLayer(Layers.SFwalk)
+
+				// =============== Point Features (Layers) ============
+				Layers.Onigilly = new OpenLayers.Layer.Vector('Stop 1 - Onigilly Restaurant');
+				map.addLayer(Layers.Onigilly);
+				Layers.Pier33 = new OpenLayers.Layer.Vector('Stop 2 - Pier 33');
+				map.addLayer(Layers.Pier33);
+				Layers.FtMason = new OpenLayers.Layer.Vector('Stop 3 - Ft. Mason');
+				map.addLayer(Layers.FtMason);
+				Layers.CrissyField = new OpenLayers.Layer.Vector('Stop 4 - Crissy Field');
+				map.addLayer(Layers.CrissyField);
+				Layers.GoldenGate = new OpenLayers.Layer.Vector('Stop 5 - Golden Gate Bridge');
+				map.addLayer(Layers.GoldenGate);
+
+				var Coord_Onigilly = new OpenLayers.Geometry.Point(-122.404308, 37.7914033).transform(new OpenLayers.Projection(myProjection), map.getProjectionObject());
+				var Coord_Pier33 = new OpenLayers.Geometry.Point(-122.405162, 37.806908).transform(new OpenLayers.Projection(myProjection), map.getProjectionObject());
+				var Coord_FtMason = new OpenLayers.Geometry.Point(-122.4298598, 37.8058729).transform(new OpenLayers.Projection(myProjection), map.getProjectionObject());
+				var Coord_CrissyField = new OpenLayers.Geometry.Point(-122.4658972, 37.8048635).transform(new OpenLayers.Projection(myProjection), map.getProjectionObject());
+				var Coord_GoldenGate = new OpenLayers.Geometry.Point(-122.477849, 37.813985).transform(new OpenLayers.Projection(myProjection), map.getProjectionObject());
+
+				var Point_Onigilly = new OpenLayers.Feature.Vector(Coord_Onigilly, null, Onigilly_style);
+				var Point_Pier33 = new OpenLayers.Feature.Vector(Coord_Pier33, null, Pier33_style);
+				var Point_FtMason = new OpenLayers.Feature.Vector(Coord_FtMason, null, FtMason_style);
+				var Point_CrissyField = new OpenLayers.Feature.Vector(Coord_CrissyField, null, CrissyField_style);
+				var Point_GoldenGate = new OpenLayers.Feature.Vector(Coord_GoldenGate, null, GoldenGate_style);
+
+				Layers["Onigilly"].addFeatures([Point_Onigilly]);
+				Layers["Pier33"].addFeatures([Point_Pier33]);
+				Layers["FtMason"].addFeatures([Point_FtMason]);
+				Layers["CrissyField"].addFeatures([Point_CrissyField]);
+				Layers["GoldenGate"].addFeatures([Point_GoldenGate]);
+
+				var initExtent = new OpenLayers.Bounds(-9706302.6788208, 4063330.4720154, -7333697.3211792, 5836669.5279846);
+				map.zoomToExtent(initExtent, false);
+
+				map.addControl(new OpenLayers.Control.LayerSwitcher());
+
+			}
+
+			// =============== End of Initialization Function ============
+
+		</script>
+
+	</head>
+	<body onload="init()">
+		<!-- Nav Bar -->
+		<div id="divInfo" style="position:absolute;top:10;left:60;background-color:white;border:4;border-style:solid;border-color:blue;padding:5;display:none;z-index:3000">
+			info
+		</div>
+
+		<div class="row">
+			<div class="large-12 columns">
+				<div class="nav-bar right">
+					<ul class="button-group radius round">
+						<li>
+							<a href="index.html" class="button">Home</a>
+						</li>
+						<li>
+							<a href="milestones.html" class="button">Milestones</a>
+						</li>
+						<li>
+							<a href="deepdives.html" class="button">Deep Dives</a>
+						</li>
+						<li>
+							<a href="exams.html" class="button">Exams</a>
+						</li>
+					</ul>
+				</div>
+				<br />
+				<h3>Geography 485L Milestone Page<!--<small>This is my blog. It's awesome.</small>--></h3>
+				<hr />
+			</div>
+		</div>
+
+		<!-- End Nav -->
+
+		<!-- Main Page Content and Sidebar -->
+
+		<div class="row">
+
+			<!-- Main Blog Content -->
+			<div class="large-12 columns">
+				<h3 class="bsection">Week 11 <small> April 2, 2014</small></h3>
+
+				<p>
+					This is a resume in map form.  Click on the markers to view information about the places I have been employed and schools I have attended.
+				</p>
+
+				<div id="map"></div>
+
+			</div>
+			<!-- End Main Content and Sidebar -->
+
+			<!-- Footer -->
+
+			<footer class="row">
+				<div class="large-12 columns">
+					<hr />
+					<div class="row">
+						<div class="large-6 columns">
+							<p>
+								© Beth Davis 2014.
+							</p>
+						</div>
+						<div class="large-6 columns">
+							<ul class="inline-list right">
+								<li>
+									<a href="index.html">Home</a>
+								</li>
+								<li>
+									<a href="milestones.html">Milestones</a>
+								</li>
+								<li>
+									<a href="deepdives.html">Deep Dives</a>
+								</li>
+
+								<li>
+									<a href="exams.html" >Exams</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+
+			<script src="js/vendor/jquery.js"></script>
+			<script src="js/foundation.min.js"></script>
+			<script>
+				$(document).foundation();
+			</script>
+	</body>
+</html>
