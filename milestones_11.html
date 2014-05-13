@@ -229,7 +229,7 @@
 				map.addLayer(wms);
 
 				// =========== Create and add a Vector layer to the map that that will contain the created features ====
-				Layers.localFeatures = new OpenLayers.Layer.Vector('My Local Features');
+				Layers.localFeatures = new OpenLayers.Layer.Vector('Local Features');
 				map.addLayer(Layers.localFeatures);
 				Layers.highestElevation = new OpenLayers.Layer.Vector('Highest Points of Elevation');
 				map.addLayer(Layers.highestElevation);
@@ -284,7 +284,7 @@
 					strokeColor : "#fe08ce",
 					label: "Roan High Knob shelter - 6,285 feet",
 					labelAlign: "lb",
-					labelXOffset: 20,
+					labelXOffset: 15,
 					labelYOffset: -20
 				};
 				DamascusStyle = {
@@ -418,7 +418,7 @@
 				<h3 class="bsection">Week 11 <small> April 2, 2014</small></h3>
 
 				<p>
-					Appalachian Trail.
+					<b>Appalachian Trail</b><br>Data obtained from the <a href="http://www.appalachiantrail.org/about-the-trail/mapping-gis-data/appalachian-trail-gis-gps-data">Appalachian Trail Conservancy</a>.
 				</p>
 
 				<div id="map"></div>
