@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" >
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="Shortcut Icon" href="favicon3.ico" type="image/x-icon">
+		<title>Beth's UNM Geography 485L Home Page</title>
+		<link rel="stylesheet" type="text/css" href="css/foundation.css"/>
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/homepage.css" />
+		<script src="js/vendor/modernizr.js"></script>
+
+	</head>
+	<body>
+		<!-- Nav Bar -->
+
+		<div class="row">
+			<div class="large-12 columns">
+				<div class="nav-bar right">
+					<ul class="button-group radius round">
+						<li>
+							<a href="index.html" class="button">Home</a>
+						</li>
+						<li>
+							<a href="milestones.html" class="button">Milestones</a>
+						</li>
+						<li>
+							<a href="deepdives.html" class="button">Deep Dives</a>
+						</li>
+						<li>
+							<a href="exams.html" class="button">Exams</a>
+						</li>
+					</ul>
+				</div>
+				<br />
+				<h3>Geography 485L Deep Dive Page</h3>
+				<hr />
+			</div>
+		</div>
+
+		<!-- End Nav -->
+
+		<!-- Main Page Content and Sidebar -->
+
+		<div class="row">
+
+			<!-- Main Blog Content -->
+			<div class="large-12 columns">
+				<h3 class="bsection">Week 11 <small> April 2, 2014</small></h3>
+
+				<p class="question">
+					Question 1
+				</p>
+				<div class="question-text">
+					<p>
+						What is the high-level description of the problem/question you want to help answer through the presentation of a collection of geographic data over the internet? 
+					</p>
+				</div>
+				<div class="answer">
+					<p>
+						I'd like to take a look at the distribution of earthquakes in New Mexico compared to the locations of oil and gas wells.  
+					</p>
+				</div>
+
+				<p class="question">
+					Question 2
+				</p>
+				<div class="question-text">
+					<p>
+						Who is the target audience for the information you want to provide?
+					</p>
+				</div>
+				<div class="answer">
+					<p>
+						My target audience is any concerned party. Many communities are considering or have already implemented fracking bans due to environmental concerns. (<a href="http://articles.latimes.com/2013/may/28/local/la-me-fracking-ban-20130529">Mora County, NM</a>)
+					</p>
+				</div>
+
+				<p class="question">
+					Question 3
+				</p>
+				<div class="question-text">
+					<p>
+						What geographic region does your problem area represent? Please describe it in words (e.g. New Mexico, Alberta Canada, etc.) and define it in terms of a geographic (WGS84) (latitude and longitude) bounding box.
+					</p>
+				</div>
+				<div class="answer">
+					<p>
+						Some of my data covers the United States, and some is just New Mexico.  There are clusters of oil and gas wells in New Mexico, so I will focus on either the area near Farmingon, NM or Carlsbad, NM.
+					</p>
+				</div>
+
+				<p class="question">
+					Question 4
+				</p>
+				<div class="question-text">
+					<p>
+						What types of data do you want to include in your project? Include a description (data content: e.g. elevation data, hydrographic survey, etc.) and types (i.e. raster, vector).
+					</p>
+				</div>
+				<div class="answer">
+					<p>
+						I've got point location data for wells, earthquakes, and 2008 data for aquifer contamination events.  I also have boundary files for watersheds, shale plays and shale basins.
+					</p>
+				</div>
+				<p class="question">
+					Question 5
+				</p>
+				<div class="question-text">
+					<p>
+						What projection will you use for the presentation of your project data? Again, describe it, provide your reasoning for selection, and provide the corresponding EPSG code.
+					</p>
+				</div>
+				<div class="answer">
+					<p>
+						I will use WGS 84/EPSG:4326.  Most of my data is already in this datum.
+					</p>
+				</div>
+				<p class="question">
+					Question 6
+				</p>
+				<div class="question-text">
+					<p>
+						Where do you anticipate acquiring data for the project from?
+					</p>
+				</div>
+				<div class="answer">
+					<p>
+						I acquired data from <a href="http://rgis.unm.edu/" target="_blank">RGIS</a>, <a href="http://earthquake.usgs.gov/earthquakes/search/" target="_blank">the USGS Earthquake Archive</a>, and <a href="http://www.fractracker.org/" target="_blank">FracTracker</a>.
+					</p>
+				</div>
+
+				<p class="question">
+					Question 7
+				</p>
+				<div class="question-text">
+					<p>
+						What barriers to acquiring and processing the needed data do you anticipate?
+					</p>
+				</div>
+				<div class="answer">
+					<p>
+						Drilling operations have to disclose chemical use, and can submit this information to a national registry called FracFocus.  State regulatory agencies also have data about specific wells, but generally you can only access the information one well at a time. I thought it might be difficult and time consuming to collect the data for the entire state, but I discovered a non-profit called <a href="http://skytruth.org/" target="_blank">SkyTruth</a> had already gathered the data for the entire US, and provided it to <a href="http://www.fractracker.org/" target="_blank">FracTracker</a>.
+					</p>
+				</div>
+
+				<p class="question">
+					Data:
+				</p>
+				<div class="row">
+					<div class="small-5 columns">
+						<p>
+							<strong>Dataset #1</strong>
+						</p>
+						<p>
+							<i>Name</i>: 'Cases Where Pit Substances Contaminated New Mexico's Ground Water'
+						</p>
+						<p>
+							<i>Type of data (raster/vector)</i>: Vector
+						</p>
+						<p>
+							<i>Format</i>: .csv
+						</p>
+						<p>
+							<i>CRS</i>: I created a shapefile from CSV in WGS84.
+						</p>
+						<p>
+							<i>Spatial extent</i>: New Mexico
+						</p>
+					</div>
+					<div class="small-5 columns">
+						<p>
+							<strong>Dataset #2</strong>
+						</p>
+						<p>
+							<i>Name</i>: US Shale Basins
+						</p>
+						<p>
+							<i>Type of data (raster/vector)</i>: Vector
+						</p>
+						<p>
+							<i>Format</i>: Shapefile
+						</p>
+						<p>
+							<i>CRS</i>: NAD83 reprojected to WGS84
+						</p>
+						<p>
+							<i>Spatial extent</i>: 					
+							<westBL Sync="TRUE">-121.977489</westBL>
+					<eastBL Sync="TRUE">-73.603535</eastBL>
+					<southBL Sync="TRUE">25.772482</southBL>
+					<northBL Sync="TRUE">49.002440</northBL>
+						</p>
+					</div>
+
+				</div>
+				<br>
+				<div class="row">
+					<div class="small-5 columns">
+						<p>
+							<strong>Dataset #3</strong>
+						</p>
+						<p>
+							<i>Name</i>: US Shale Gas Plays
+						</p>
+						<p>
+							<i>Type of data (raster/vector)</i>: Vector
+						</p>
+						<p>
+							<i>Format</i>: Shapefile
+						</p>
+						<p>
+							<i>CRS</i>: NAD83 reprojected to WGS84
+						</p>
+						<p>
+							<i>Spatial extent</i>:					
+							<westBL Sync="TRUE">-121.147890</westBL>
+					<eastBL Sync="TRUE">-73.851723</eastBL>
+					<southBL Sync="TRUE">27.605660</southBL>
+					<northBL Sync="TRUE">49.049442</northBL>
+						</p>
+					</div>
+					<div class="small-5 columns">
+						<p>
+							<strong>Dataset #4</strong>
+						</p>
+						<p>
+							<i>Name</i>: US Oil and Gas Wells
+						</p>
+						<p>
+							<i>Type of data (raster/vector)</i>: Vector
+						</p>
+						<p>
+							<i>Format</i>: Shapefile
+						</p>
+						<p>
+							<i>CRS</i>: WGS84
+						</p>
+						<p>
+							<i>Spatial extent</i>: xMin,yMin -164.931,25.9773 : xMax,yMax -74.5517,71.2684
+						</p>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="small-5 columns">
+						<p>
+							<strong>Dataset #5</strong>
+						</p>
+						<p>
+							<i>Name</i>: New Mexico HUC-8 Boundaries
+						</p>
+						<p>
+							<i>Type of data (raster/vector)</i>: Vector
+						</p>
+						<p>
+							<i>Format</i>: Shapefile
+						</p>
+						<p>
+							<i>CRS</i>: WGS84
+						</p>
+						<p>
+							<i>Spatial extent</i>:                 <westbc>-110.586838</westbc>
+                <eastbc>-101.104057</eastbc>
+                <northbc>38.066242</northbc>
+                <southbc>30.052370</southbc>
+						</p>
+					</div>
+
+					<div class="small-5 columns">
+						<p>
+							<strong>Dataset #6</strong>
+						</p>
+						<p>
+							<i>Name</i>: New Mexico Earthquakes 1970-2014
+						</p>
+						<p>
+							<i>Type of data (raster/vector)</i>: Vector
+						</p>
+						<p>
+							<i>Format</i>: .csv
+						</p>
+						<p>
+							<i>CRS</i>:  I created a shapefile from CSV in WGS84.
+						</p>
+						<p>
+							<i>Spatial extent</i>:
+						</p>
+					</div>
+				</div>
+
+				<!-- End Main Content and Sidebar -->
+
+				<!-- Footer -->
+
+				<footer class="row">
+					<div class="large-12 columns">
+						<hr />
+						<div class="row">
+							<div class="large-6 columns">
+								<p>
+									© Beth Davis 2014.
+								</p>
+							</div>
+							<div class="large-6 columns">
+								<ul class="inline-list right">
+									<li>
+										<a href="index.html">Home</a>
+									</li>
+									<li>
+										<a href="milestones.html">Milestones</a>
+									</li>
+									<li>
+										<a href="deepdives.html">Deep Dives</a>
+									</li>
+									<li>
+										<a href="exams.html">Exams</a>
+									</li>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</footer>
+
+				<script src="js/vendor/jquery.js"></script>
+				<script src="js/foundation.min.js"></script>
+				<script>
+					$(document).foundation();
+				</script>
+	</body>
+</html>
