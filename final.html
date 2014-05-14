@@ -11,19 +11,259 @@
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="css/homepage.css" />
 		<script src="js/vendor/modernizr.js"></script>
+
+		<script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
 		<style>
-			.shrinky {
-				height: 400px;
-			}
-			li {
+			.answer li {
 
 				/*margin-top: 20px;*/
 				margin-bottom: 12px;
 			}
+			#mapdiv {
+				width: 100%;
+				height: 600px;
+			}
 		</style>
+		<script type="text/javascript">
+			// define global variables
+			// define global variables
+			var lon = -106.58565902709;
+			var lat = 35.076740741731;
+			var zoom = 13;
+			var myProjection = new OpenLayers.Projection("EPSG:4326")
+			var map;
+			var Layers = new Object();
+			var bmngLayer, countiesLayer, indlandLayer, federallandsLayer;
 
+			// =============== Initialization function ===================
+			function init() {
+
+				map = new OpenLayers.Map('mapdiv', {
+					numZoomLevels : 21, // default=16
+					units : "m"
+				});
+
+				// =========== USGS National Map WMS ======
+
+				// from http://basemap.nationalmap.gov/ArcGIS/services/USGSImageryTopo/MapServer/WMSServer?request=GetCapabilities&service=WMS
+				Layers.usImagery = new OpenLayers.Layer.WMS("US Topo Tile Service - USGS", "http://basemap.nationalmap.gov/arcgis/services/USGSTopo/MapServer/WmsServer?", {
+					layers : "0",
+					version : '1.3.0',
+					transparent : 'TRUE',
+					opacity : .50
+				}, {
+					isBaseLayer : true
+				});
+				map.addLayer(Layers.usImagery);
+
+
+				var a5Contour = new OpenLayers.Layer.WMS("Albuquerque Contours", "http://geog485.unm.edu:8080/geoserver/s_edavis/wms?", {
+					layers : "35106-A5_CONT",
+					transparent : true
+				}, {
+					singleTile : true
+				});
+				map.addLayer(a5Contour);
+
+				var a6Contour = new OpenLayers.Layer.WMS("West Albuquerque Contours", "http://geog485.unm.edu:8080/geoserver/s_edavis/wms?", {
+					layers : "35106-A6_CONT",
+					transparent : true
+				}, {
+					singleTile : true
+				});
+				map.addLayer(a6Contour);
+
+				var tigerRoads = new OpenLayers.Layer.WMS("TIGER 2006 Roads", "http://geog485.unm.edu:8080/geoserver/s_edavis/wms?", {
+					layers : "tgr2006se_bern_lka",
+					transparent : true
+				}, {
+					singleTile : true,
+					visibility : false
+				});
+				map.addLayer(tigerRoads);
+
+				var a5bounds = new OpenLayers.Layer.WMS("Albuquerque Boundary", "http://geog485.unm.edu:8080/geoserver/s_edavis/wms?", {
+					layers : "35106-A5",
+					transparent : true
+				}, {
+					singleTile : true,
+					visibility : false
+				});
+				map.addLayer(a5bounds);
+
+				var a6bounds = new OpenLayers.Layer.WMS("West Albuquerque Boundary", "http://geog485.unm.edu:8080/geoserver/s_edavis/wms?", {
+					layers : "35106-A6",
+					transparent : true
+				}, {
+					singleTile : true,
+					visibility : false
+				});
+				map.addLayer(a6bounds);
+
+				var redContour = new OpenLayers.Layer.WMS("Red-colored Contours", "http://geog485.unm.edu:8080/geoserver/s_edavis/wms?", {
+					layers : "35106-A5_CONT_styled",
+					transparent : true
+				}, {
+					singleTile : true,
+					visibility : false
+				});
+				map.addLayer(redContour);
+
+				var oliveContour = new OpenLayers.Layer.WMS("Olive-colored Contours", "http://geog485.unm.edu:8080/geoserver/s_edavis/wms?", {
+					layers : "35106-A6_CONT_styled",
+					transparent : true
+				}, {
+					singleTile : true,
+					visibility : false
+				});
+				map.addLayer(oliveContour);
+
+				// =========== Create and add a Vector layer to the map that that will contain the created features ====
+				/*Layers.localFeatures = new OpenLayers.Layer.Vector('Local Features');
+				 map.addLayer(Layers.localFeatures);
+				 Layers.highestElevation = new OpenLayers.Layer.Vector('Highest Points of Elevation');
+				 map.addLayer(Layers.highestElevation);
+
+				 // =========== Create Some Styles ==============
+				 // Define some Styles
+				 SheltersStyle = {
+				 pointRadius : 6,
+				 fillColor : "#FF9900",
+				 fillOpacity : .30,
+				 strokeOpacity : 1,
+				 strokeColor : "#FF9900"
+				 };
+				 ClingmanStyle = {
+				 pointRadius : 14,
+				 fillColor : "#d8fe08",
+				 fillOpacity : .75,
+				 strokeOpacity : 1,
+				 strokeColor : "#d8fe08",
+				 label : "Clingman's Dome - 6,643 feet",
+				 labelAlign : "lb",
+				 labelXOffset : 18,
+				 labelYOffset : -10
+				 };
+				 GuyotStyle = {
+				 pointRadius : 14,
+				 fillColor : "#08fef7",
+				 fillOpacity : .75,
+				 strokeOpacity : 1,
+				 strokeColor : "#08fef7",
+				 label : "Mount Guyot - 6,621 feet",
+				 labelAlign : "lb",
+				 labelXOffset : 20,
+				 labelYOffset : -15
+				 };
+				 WashingtonStyle = {
+				 pointRadius : 14,
+				 fillColor : "#0881fe",
+				 fillOpacity : .75,
+				 strokeOpacity : 1,
+				 strokeColor : "#0881fe",
+				 label : "Mount Washington - 6,288 feet",
+				 labelAlign : "rb",
+				 labelXOffset : -20,
+				 labelYOffset : 15
+				 };
+				 RoanHighStyle = {
+				 pointRadius : 14,
+				 fillColor : "#fe08ce",
+				 fillOpacity : .75,
+				 strokeOpacity : 1,
+				 strokeColor : "#fe08ce",
+				 label : "Roan High Knob shelter - 6,285 feet",
+				 labelAlign : "lb",
+				 labelXOffset : 15,
+				 labelYOffset : -10
+				 };
+				 DamascusStyle = {
+				 pointRadius : 14,
+				 fillColor : "#fe1708",
+				 fillOpacity : .75,
+				 strokeOpacity : 1,
+				 strokeColor : "#fe1708",
+				 label : "Damascus, VA - Trail Town, USA",
+				 labelAlign : "rb",
+				 labelXOffset : -20
+				 };
+
+				 // =========== Create Some Geometries & Features ==============
+
+				 // Key Coordinates (Geometries)
+
+				 var CoordClingman = new OpenLayers.Geometry.Point(-83.498496, 35.562872);
+				 var CoordGuyot = new OpenLayers.Geometry.Point(-71.533968, 44.168121);
+				 var CoordWash = new OpenLayers.Geometry.Point(-71.30367, 44.27067);
+				 var CoordRoan = new OpenLayers.Geometry.Point(-82.12222, 36.10506);
+				 var CoordDamascus = new OpenLayers.Geometry.Point(-81.786944, 36.633889);
+
+				 // Corresponding Features
+
+				 var PointClingman = new OpenLayers.Feature.Vector(CoordClingman, null, ClingmanStyle);
+				 var PointGuyot = new OpenLayers.Feature.Vector(CoordGuyot, null, GuyotStyle);
+				 var PointWash = new OpenLayers.Feature.Vector(CoordWash, null, WashingtonStyle);
+				 var PointRoan = new OpenLayers.Feature.Vector(CoordRoan, null, RoanHighStyle);
+				 var PointDamascus = new OpenLayers.Feature.Vector(CoordDamascus, null, DamascusStyle);
+
+				 Layers["localFeatures"].addFeatures([PointDamascus]);
+				 Layers["highestElevation"].addFeatures([PointClingman, PointGuyot, PointWash, PointRoan]);
+
+				 // =========== KML Layer Addition ===============
+
+				 var kmllayer = new OpenLayers.Layer.Vector("Trail Shelters", {
+				 style : SheltersStyle,
+				 strategies : [new OpenLayers.Strategy.Fixed()],
+				 protocol : new OpenLayers.Protocol.HTTP({
+				 url : "data/atc_shelter_120211.kml",
+				 format : new OpenLayers.Format.KML({
+				 extractStyles : false,
+				 extractAttributes : true,
+				 maxDepth : 2
+				 })
+				 })
+				 });
+
+				 //Add a selector control to the kmllayer with popup functions
+				 var controls = {
+				 selector : new OpenLayers.Control.SelectFeature(kmllayer, {
+				 onSelect : createPopup,
+				 onUnselect : destroyPopup
+				 })
+				 };
+
+				 function createPopup(feature) {
+				 feature.popup = new OpenLayers.Popup.FramedCloud("pop", feature.geometry.getBounds().getCenterLonLat(), null, '<div class="markerContent">' + feature.attributes.name + '</div>', null, true, function() {
+				 controls['selector'].unselectAll();
+				 });
+				 //feature.popup.closeOnMove = true;
+				 map.addPopup(feature.popup);
+				 }
+
+				 function destroyPopup(feature) {
+				 feature.popup.destroy();
+				 feature.popup = null;
+				 }
+
+				 map.addControl(controls['selector']);
+				 controls['selector'].activate();
+
+				 map.addLayer(kmllayer);*/
+
+				map.setCenter(new OpenLayers.LonLat(lon, lat), zoom);
+
+				map.addControl(new OpenLayers.Control.LayerSwitcher());
+				map.addControl(new OpenLayers.Control.MousePosition());
+
+			};
+
+			// =============== End of Initialization Function ============
+
+		</script>
 	</head>
-	<body>
+	<body onload="init()">
 		<!-- Nav Bar -->
 
 		<div class="row">
@@ -269,8 +509,9 @@
 				</p>
 				</div>-->
 				<div id="mapdiv">
-					Map here
+
 				</div>
+				<br />
 				<br />
 				<p class="question">
 					Question 4
