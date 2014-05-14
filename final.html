@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" >
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="Shortcut Icon" href="favicon3.ico" type="image/x-icon">
+		<title>Beth's UNM Geography 485L Home Page</title>
+		<link rel="stylesheet" type="text/css" href="css/foundation.css"/>
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/homepage.css" />
+		<script src="js/vendor/modernizr.js"></script>
+		<style>
+			.shrinky {
+				height: 400px;
+			}
+			li {
+
+				/*margin-top: 20px;*/
+				margin-bottom: 12px;
+			}
+		</style>
+
+	</head>
+	<body>
+		<!-- Nav Bar -->
+
+		<div class="row">
+			<div class="large-12 columns">
+				<div class="nav-bar right">
+					<ul class="button-group radius round">
+						<li>
+							<a href="index.html" class="button">Home</a>
+						</li>
+						<li>
+							<a href="milestones.html" class="button">Milestones</a>
+						</li>
+						<li>
+							<a href="deepdives.html" class="button">Deep Dives</a>
+						</li>
+						<li>
+							<a href="exams.html" class="button">Exams</a>
+						</li>
+					</ul>
+				</div>
+				<br />
+				<h3>Geography 485L Final</h3>
+				<hr />
+			</div>
+		</div>
+
+		<!-- End Nav -->
+
+		<!-- Main Page Content and Sidebar -->
+
+		<div class="row">
+
+			<!-- Main Blog Content -->
+			<div class="large-12 columns">
+				<h3 class="bsection">Week 16 <small> May 14, 2014</small></h3>
+
+				<p class="question">
+					Question 1
+				</p>
+				<div class="question-text">
+					<p>
+						Provide the first 5 lines of the output from gdalinfo or ogrinfo for each of the datasets.
+					</p>
+
+				</div>
+				<div class="answer">
+					<ol>
+						<li>
+							<code>
+								bethdavis$ gdalinfo 35106-A5.tif
+								<br />
+								Driver: GTiff/GeoTIFF
+								<br />
+								Files: 35106-A5.tif
+								<br />
+								Size is 1169, 1411
+								<br />
+								Coordinate System is:
+								<br />
+								PROJCS["NAD83 / UTM zone 13N", ...]
+							</code>
+						</li>
+						<li>
+							<code>
+								bethdavis$ gdalinfo 35106-A6.tif
+								<br />
+								Driver: GTiff/GeoTIFF
+								<br />
+								Files: 35106-A6.tif, 35106-A6.tif.aux.xml
+								<br />
+								Size is 1170, 1413
+								<br />
+								Coordinate System is:
+								<br />
+								PROJCS["NAD83 / UTM zone 13N", ...]
+							</code>
+						</li>
+						<li>
+							<code>
+								bethdavis$ ogrinfo 35106-A5_CONT.shp -al
+								<br />
+								INFO: Open of `35106-A5_CONT.shp'
+								using driver `ESRI Shapefile' successful.
+								<br />
+
+								Layer name: 35106-A5_CONT
+								<br />
+								Geometry: 3D Line String
+								<br />
+								Feature Count: 1439
+								<br />
+								Extent: (-106.625000, 35.032739) - (-106.524163, 35.120146)
+							</code>
+						</li>
+						<li>
+							<code>
+								bethdavis$ ogrinfo 35106-A6_CONT.shp -al
+								<br />
+								INFO: Open of `35106-A6_CONT.shp'
+								using driver `ESRI Shapefile' successful.
+								<br />
+
+								Layer name: 35106-A6_CONT
+								<br />
+								Geometry: 3D Line String
+								<br />
+								Feature Count: 686
+								<br />
+								Extent: (-106.647269, 35.032841) - (-106.624999, 35.120146)
+
+							</code>
+						</li>
+						<li>
+							<code>
+								bethdavis$ ogrinfo tgr2006se_bern_lka.shp -al
+								<br />
+								INFO: Open of `tgr2006se_bern_lka.shp'
+								using driver `ESRI Shapefile' successful.
+								<br />
+
+								Layer name: tgr2006se_bern_lka
+								<br />
+								Geometry: Line String
+								<br />
+								Feature Count: 8451
+								<br />
+								Extent: (-106.647182, 35.032764) - (-106.524194, 35.120146)
+							</code>
+						</li>
+					</ol>
+				</div>
+
+				<p class="question">
+					Question 2
+				</p>
+				<div class="question-text">
+					<p>
+						Layer Previews:
+					</p>
+
+				</div>
+
+				<div class="row">
+					<div class="small-4 columns">
+						<p>
+							<a href="http://geog485.unm.edu:8080/geoserver/s_edavis/wms?service=WMS&version=1.1.0&request=GetMap&layers=s_edavis:35106-A5&styles=&bbox=351675.0,3874050.0,363365.0,3888160.0&width=424&height=512&srs=EPSG:26913&format=application/openlayers">35106-A5</a>
+							<br />
+							Click to see full size image.
+						</p><a href="img/Preview_A5.png"><img src="img/Preview_A5.png" /></a>
+					</div>
+					<div class="small-4 columns">
+						<p>
+							<a href="http://geog485.unm.edu:8080/geoserver/s_edavis/wms?service=WMS&version=1.1.0&request=GetMap&layers=s_edavis:35106-A6&styles=&bbox=340275.0,3874220.0,351975.0,3888350.0&width=423&height=512&srs=EPSG:26913&format=application/openlayers">35106-A6</a>
+							<br />
+							Click to see full size image.
+						</p><a href="img/Preview_A6.png"><img src="img/Preview_A6.png" /></a>
+					</div>
+					<div class="small-4 columns">
+						<p>
+							<a href="http://geog485.unm.edu:8080/geoserver/s_edavis/wms?service=WMS&version=1.1.0&request=GetMap&layers=s_edavis:35106-A6_CONT&styles=&bbox=-106.64726859964829,35.03284096294705,-106.62499903757086,35.1201464727924&width=130&height=512&srs=EPSG:4326&format=application/openlayers">35106-A6_CONT</a>
+							<br>
+							Click to see full size image.
+
+						</p><a href="img/Preview_A6contours.png"><img src="img/Preview_A6contours.png" /></a>
+					</div>
+
+				</div>
+				<br />
+				<div class="row">
+					<div class="small-4 columns">
+						<p>
+							<a href="http://geog485.unm.edu:8080/geoserver/s_edavis/wms?service=WMS&version=1.1.0&request=GetMap&layers=s_edavis:35106-A5_CONT&styles=&bbox=-106.62499983396718,35.03273902647254,-106.52416308305456,35.1201464727924&width=512&height=443&srs=EPSG:4326&format=application/openlayers">35106-A5_CONT</a>
+							<br />
+							Click to see full size image.
+						</p><a href="img/Preview_A5contours.png"><img src="img/Preview_A5contours.png" /></a>
+					</div>
+					<div class="small-4 columns">
+						<p>
+							<a href="http://geog485.unm.edu:8080/geoserver/s_edavis/wms?service=WMS&version=1.1.0&request=GetMap&layers=s_edavis:tgr2006se_bern_lka&styles=&bbox=-106.64718153427467,35.03276432599712,-106.52419425995093,35.1201464727924&width=512&height=363&srs=EPSG:4326&format=application/openlayers">tgr2006se_bern_lka</a>
+							<br>
+							Click to see full size image.
+
+						</p><a href="img/Preview_roads.png"><img src="img/Preview_roads.png" /></a>
+					</div>
+
+					<div class="small-4 columns">
+						<p></p>
+					</div>
+				</div>
+				<br />
+				<br />
+				<p class="question-text">
+					Layers added to QGIS as WMS:
+				</p>
+				<div class="row">
+					<div class="small-4 columns">
+						<p>
+							<a href="http://geog485.unm.edu:8080/geoserver/s_edavis/wms?&request=GetCapabilities">35106-A6_CONT</a>
+							<br>
+							Click to see full size image.
+
+						</p><a href="img/A6_contours.png"><img src="img/A6_contours.png" /></a>
+					</div>
+					<div class="small-4 columns">
+						<p>
+							<a href="http://geog485.unm.edu:8080/geoserver/s_edavis/wms?&request=GetCapabilities">35106-A5_CONT</a>
+							<br />
+							Click to see full size image.
+						</p><a href="img/A5_contours.png"><img src="img/A5_contours.png" /></a>
+					</div>
+					<div class="small-4 columns">
+						<p>
+							<a href="http://geog485.unm.edu:8080/geoserver/s_edavis/wms?&request=GetCapabilities">tgr2006se_bern_lka</a>
+							<br />
+							Click to see full size image.
+						</p><a href="img/tigerroads.png"><img src="img/tigerroads.png" /></a>
+					</div>
+				</div>
+				<br />
+
+				<p class="question">
+					Question 3
+				</p>
+				<div class="question-text">
+					<p>
+						Openlayers Web Map with all five layers:
+					</p>
+
+				</div>
+				<!--<div class="answer">
+				<p>
+				<code>
+				$ cs2cs +proj=latlon +datum=WGS84 +to +proj=utm +zone=13 +datum=NAD83
+				<br />
+				-105.939670 35.682180
+				<br />
+				414970.04	3949105.23 0.00
+				<br />
+				-107.930153 34.891983
+				<br />
+				232227.14	3864983.25 0.00
+				</code>
+				</p>
+				</div>-->
+				<div id="mapdiv">
+					Map here
+				</div>
+				<br />
+				<p class="question">
+					Question 4
+				</p>
+				<div class="question-text">
+					<p>
+						<ol>
+							<li>
+								Create two new layers based on two of the stores added in 2) above.
+							</li>
+							<li>
+								Create two custom styles, one for each of the two layers and make those the default style for the
+								two new layers
+							</li>
+							<li>
+								Add these two styled layers to the mapping client generated for question 4. Provide the layer names for your customized layers in your writeup.
+							</li>
+						</ol>
+					</p>
+
+				</div>
+				<div class="answer">
+					<p>
+						The names of the styled layers are 35106-A5_CONT_styled and 35106-A6_CONT_styled.
+					</p>
+				</div>
+
+			</div>
+		</div>
+		<!-- End Main Content and Sidebar -->
+
+		<!-- Footer -->
+
+		<footer class="row">
+			<div class="large-12 columns">
+				<hr />
+				<div class="row">
+					<div class="large-6 columns">
+						<p>
+							© Beth Davis 2014.
+						</p>
+					</div>
+					<div class="large-6 columns">
+						<ul class="inline-list right">
+							<li>
+								<a href="index.html">Home</a>
+							</li>
+							<li>
+								<a href="milestones.html">Milestones</a>
+							</li>
+							<li>
+								<a href="deepdives.html">Deep Dives</a>
+							</li>
+							<li>
+								<a href="exams.html">Exams</a>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script src="js/vendor/jquery.js"></script>
+		<script src="js/foundation.min.js"></script>
+		<script>
+			$(document).foundation();
+		</script>
+	</body>
+</html>
