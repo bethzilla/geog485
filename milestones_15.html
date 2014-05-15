@@ -103,7 +103,48 @@
 					singleTile : true,
 					visibility : true
 				});
+				
+				/*var earthquakes = new OpenLayers.Layer.Vector("Earthquakes 1970-2014", {
+					//style: SheltersStyle,
+					strategies : [new OpenLayers.Strategy.Fixed()],
+					protocol : new OpenLayers.Protocol.HTTP({
+						url : "http://geog485.unm.edu:8080/geoserver/s_edavis/wms/kml?layers=s_edavis:NM_earthquakes",
+						format : new OpenLayers.Format.KML({
+							//extractStyles : true,
+							extractAttributes : true,
+							maxDepth : 2
+						})
+					})
+				});
+				
+				//Add a selector control to the earthquake layer with popup functions
+				var controls = {
+					selector : new OpenLayers.Control.SelectFeature(earthquakes, {
+						onSelect : createPopup,
+						onUnselect : destroyPopup
+					})
+				};
+
+				function createPopup(feature) {
+					feature.popup = new OpenLayers.Popup.FramedCloud("pop", feature.geometry.getBounds().getCenterLonLat(), null, '<div class="markerContent">' + feature.attributes.time + '</div>', null, true, function() {
+						controls['selector'].unselectAll();
+					});
+					//feature.popup.closeOnMove = true;
+					map.addPopup(feature.popup);
+				}
+
+				function destroyPopup(feature) {
+					feature.popup.destroy();
+					feature.popup = null;
+				}
+
+
+				map.addControl(controls['selector']);
+				controls['selector'].activate();*/
 				map.addLayer(earthquakes);
+
+
+
 
 				var contamination = new OpenLayers.Layer.WMS("Pit Contaminations (2008)", "http://geog485.unm.edu:8080/geoserver/s_edavis/wms?", {
 					layers : "NM_pit_contam",
@@ -181,12 +222,19 @@
 				<h3 class="bsection">Week 15 <small> April 30, 2014</small></h3>
 
 				<p>
-					<b>Unconventional Drilling in Southeast New Mexico</b>
+					<b>Oil and Gas Wells in Southeast New Mexico</b>
 					<br />
+					In the United States, the number of earthquakes has increased dramatically over the past several years.  USGS scientists have found this increase in seismicity at some locations coincides with the injection of wastewater, a byproduct of oil and gas production, into disposal wells specifically designed for this purpose (<a href="http://www.usgs.gov/blogs/features/usgs_top_story/man-made-earthquakes/">USGS, 2014</a>). This map depicts the oil and gas wells located in New Mexico, along with locations for earthquakes since 1970. Since there is also a concern about groundwater supply contamination with the injection of wastewater into wells, layers containing information about pit contamination sites (2008) and HUC-8 watershed boundaries are also available.  Please scroll around the map to view more features.
 				</p>
 
 				<div id='finalmap'></div>
-
+				<br />
+				<img src="http://geog485.unm.edu:8080/geoserver/s_edavis/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=NM_OG_022014" /> Oil and Gas Wells <small>(<a href="http://www.fractracker.org/">source</a>)</small><br />
+				<img src="http://geog485.unm.edu:8080/geoserver/s_edavis/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=NM_earthquakes" /> Earthquakes 1970-2014 <small>(<a href="http://earthquake.usgs.gov/earthquakes/search/">source</a>)</small><br />
+				<img src="http://geog485.unm.edu:8080/geoserver/s_edavis/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=NM_ShaleBasins_EIA_May2011" />Shale Basins - <small>broad depositional areas that may contain one or more shale plays. (<a href="http://www.fractracker.org/">source</a>)</small><br />
+				<img src="http://geog485.unm.edu:8080/geoserver/s_edavis/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=NM_ShalePlays_EIA_May2011" />Shale Plays - <small>specific organic rich sedimentary rock formations, for which the possibility of extracting oil or natural gas is thought to be likely. (<a href="http://www.fractracker.org/">source</a>)</small><br />
+				<img src="http://geog485.unm.edu:8080/geoserver/s_edavis/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=NM_pit_contam" />Pit Contamination Sites <small>(<a href="http://www.fractracker.org/">source</a>)</small><br />
+				<img src="http://geog485.unm.edu:8080/geoserver/s_edavis/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=wbdhu8_a_nm" /> HUC-8 Watershed Boundary <small>(<a href="http://rgis.unm.edu/">source</a>)</small><br />
 			</div>
 			<!-- End Main Content and Sidebar -->
 
